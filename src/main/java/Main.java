@@ -16,14 +16,15 @@ public class Main {
         System.out.println(ab);
 
         //Сравнение через equals
+        //TODO (Ответ) тебе надо сравнить со String с StringBuilder
         System.out.println(ab.equals(ab));
 
         //Сложение строк через StringBuilder
         StringBuilder c = new StringBuilder();
 
-        //TODO Посмотри что возвращает метод append (ctrl+ПКМ по append) он возвращает StringBuilder, а вывести ты пытаешься String
-        //TODO нужно сделать с.append("World!").toString()
-        //TODO но тебе нужно сначала из String a = "Hello" и String b = "World" составить в StringBuilder предложение, потом выводить
+        //TODO(готово) Посмотри что возвращает метод append (ctrl+ПКМ по append) он возвращает StringBuilder, а вывести ты пытаешься String
+        //TODO(готово) нужно сделать с.append("World!").toString()
+        //TODO(готово) но тебе нужно сначала из String a = "Hello" и String b = "World" составить в StringBuilder предложение, потом выводить
 
         c.append(a);
         c.append(" ");
@@ -31,7 +32,7 @@ public class Main {
         System.out.println(c.toString());
 
 
-        //TODO используй переменные типа float и double, методы так же возвращают результаты, результаты передавай в result
+        //TODO(готово) используй переменные типа float и double, методы так же возвращают результаты, результаты передавай в result
         //Переменные float и double
         float x = 3.1f;
         float y = 3.1f;
@@ -41,6 +42,7 @@ public class Main {
         double result2 = multiply2(x1, y1);
 
         //Результаты методов
+        //TODO у тебя уже есть вычисленные результаты не нужно вычислять их снова
         System.out.println(multiply(x, y));
         System.out.println(multiply2(x1, y1));
 
@@ -67,7 +69,7 @@ public class Main {
         return x1 * y1;
     }
 
-    //TODO осомтри библеотеку Math там есть метод equals сделай ещё 1 метод с ним
+    //TODO этот метод тебе не нужен у тебя есть метод equals
     //Метод сравнение Boolean
     private static Boolean result(float x, double y) {
         if (x >= y) {
@@ -78,9 +80,8 @@ public class Main {
     }
 
     //Метод сравнения equals
-    //TODO (Ответ) Нет. Метод должен принимать 2 числа, возвращать tru или false, используй ветвление if(){}else{}
-    //TODO @Override тебе сейчас не нужен. Удали этот метод.
-
+    //TODO(готово) (Ответ) Нет. Метод должен принимать 2 числа, возвращать tru или false, используй ветвление if(){}else{}
+    //TODO у тебя здесь должно быть сравнение, равны ли они или нет. В возвращат тебе лучше значение не boolean, а Boolean
     public static boolean equals(float x, double y) {
         if (x >= y) {
             return true;
