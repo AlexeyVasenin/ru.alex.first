@@ -1,6 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
+
+        //TODO сделай так что перед выводом строки, собрать эту строку в переменну (со StringBuilder не надо), передать в метод equals для сравнения
         //Сложение сторок
         String a = "Hello";
         String b = "World!";
@@ -30,6 +32,7 @@ public class Main {
         System.out.println(multiply2(x1, y1));
 
         //TODO не понял как передать результаты в "result"
+        //TODO (Ответ) result это переменная, которая принимает знчение из метода (Пример: float result = multiply(x, y))
         System.out.println(result());
 
         //Сравениен результатов через equals.
@@ -48,17 +51,18 @@ public class Main {
         return x1 * y1;
     }
 
-    //TODO посомтри библеотеку Math там есть метод equals сделай ещё 1 метод с ним
+    //TODO осомтри библеотеку Math там есть метод equals сделай ещё 1 метод с ним
     //Метод сравнение Boolean
     private static Boolean result() {
-
-        return;
+        return false;
     }
 
     //Метод сравнения equals
     //TODO Я так понимаю в таком виде должен быть реализован метод equals?!
-    @Override
-    public boolean equals(Object obj) {
-        ...;
-    }
+    //TODO (Ответ) Нет. Метод должен принимать 2 числа, возвращать tru или false, используй ветвление if(){}else{}
+    //TODO @Override тебе сейчас не нужен. Удали этот метод.
+//    @Override
+//    public boolean equals(Object obj) {
+//
+//    }
 }
