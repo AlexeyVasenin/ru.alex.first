@@ -15,10 +15,6 @@ public class Main {
         //Вывод
         System.out.println(ab);
 
-        //Сравнение через equals
-        //TODO (Ответ) тебе надо сравнить со String с StringBuilder
-        System.out.println(ab.equals(ab));
-
         //Сложение строк через StringBuilder
         StringBuilder c = new StringBuilder();
 
@@ -31,6 +27,10 @@ public class Main {
         c.append(b);
         System.out.println(c.toString());
 
+        //Сравнение через equals
+        //TODO (Ответ) тебе надо сравнить со String с StringBuilder
+        //TODO (Правка) изменил сравнение.
+        System.out.println(ab.equals(c));
 
         //TODO(готово) используй переменные типа float и double, методы так же возвращают результаты, результаты передавай в result
         //Переменные float и double
@@ -39,17 +39,18 @@ public class Main {
         float result1 = multiply(x, y);
         double x1 = 3.1;
         double y1 = 3.1;
-        double result2 = multiply2(x1, y1);
+        double result2 = multiply(x1, y1);
 
         //Результаты методов
         //TODO у тебя уже есть вычисленные результаты не нужно вычислять их снова
-        System.out.println(multiply(x, y));
-        System.out.println(multiply2(x1, y1));
+        //TODO (Правка) Исправил вывод.
+        System.out.println(result1);
+        System.out.println(result2);
 
         //TODO не понял как передать результаты в "result"
         //TODO (Ответ) result это переменная, которая принимает знчение из метода (Пример: float result = multiply(x, y))
         //Сравнение результатов через boolean
-        System.out.println(result(result1, result2));
+        //System.out.println(result(result1, result2));
 
         //Сравениен результатов через equals.
         System.out.println(equals(result1, result2));
@@ -58,6 +59,7 @@ public class Main {
     }
 
     //TODO по поводу названия методов почитай про перегрузку методов, очень полезная штука
+    //TODO (Правка) почитал по перегрузку методов, изменил название
     //Метод Float
     private static Float multiply(float x, float y) {
         return x * y;
@@ -65,25 +67,27 @@ public class Main {
     }
 
     //Метод Double
-    private static Double multiply2(double x1, double y1) {
+    private static Double multiply(double x1, double y1) {
         return x1 * y1;
     }
 
     //TODO этот метод тебе не нужен у тебя есть метод equals
     //Метод сравнение Boolean
-    private static Boolean result(float x, double y) {
+   /* private static Boolean result(float x, double y) {
         if (x >= y) {
             return true;
         } else {
             return false;
         }
-    }
+    }*/
 
     //Метод сравнения equals
     //TODO(готово) (Ответ) Нет. Метод должен принимать 2 числа, возвращать tru или false, используй ветвление if(){}else{}
     //TODO у тебя здесь должно быть сравнение, равны ли они или нет. В возвращат тебе лучше значение не boolean, а Boolean
-    public static boolean equals(float x, double y) {
-        if (x >= y) {
+    //TODO (Правка) Испрвил сравнение и возвращаемое значение.
+    //TODO (Вопрос?) В чем отличие возвращаемого значения boolean от Boolean
+    public static Boolean equals(float x, double y) {
+        if (x == y) {
             return true;
         } else {
             return false;
