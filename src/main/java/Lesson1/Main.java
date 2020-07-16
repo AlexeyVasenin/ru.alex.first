@@ -1,8 +1,10 @@
+package Lesson1;
+
 public class Main {
     public static void main(String[] args) {
 
 
-        //TODO сделай так что перед выводом строки, собрать эту строку в переменну (со StringBuilder не надо), передать в метод equals для сравнения
+        //TODO(готово) сделай так что перед выводом строки, собрать эту строку в переменну (со StringBuilder не надо), передать в метод equals для сравнения
         //Сложение сторок
 
         //Переменные
@@ -28,8 +30,6 @@ public class Main {
         System.out.println(c.toString());
 
         //Сравнение через equals
-        //TODO (Ответ) тебе надо сравнить со String с StringBuilder
-        //TODO (Правка) изменил сравнение.
         System.out.println(ab.equals(c));
 
         //TODO(готово) используй переменные типа float и double, методы так же возвращают результаты, результаты передавай в result
@@ -42,16 +42,11 @@ public class Main {
         double result2 = multiply(x1, y1);
 
         //Результаты методов
-        //TODO у тебя уже есть вычисленные результаты не нужно вычислять их снова
-        //TODO (Правка) Исправил вывод.
         System.out.println(result1);
         System.out.println(result2);
 
         //TODO не понял как передать результаты в "result"
         //TODO (Ответ) result это переменная, которая принимает знчение из метода (Пример: float result = multiply(x, y))
-        //Сравнение результатов через boolean
-        //System.out.println(result(result1, result2));
-
         //Сравениен результатов через equals.
         System.out.println(equals(result1, result2));
 
@@ -71,21 +66,10 @@ public class Main {
         return x1 * y1;
     }
 
-    //TODO этот метод тебе не нужен у тебя есть метод equals
-    //Метод сравнение Boolean
-   /* private static Boolean result(float x, double y) {
-        if (x >= y) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
     //Метод сравнения equals
     //TODO(готово) (Ответ) Нет. Метод должен принимать 2 числа, возвращать tru или false, используй ветвление if(){}else{}
     //TODO у тебя здесь должно быть сравнение, равны ли они или нет. В возвращат тебе лучше значение не boolean, а Boolean
-    //TODO (Правка) Испрвил сравнение и возвращаемое значение.
-    //TODO (Вопрос?) В чем отличие возвращаемого значения boolean от Boolean
     public static Boolean equals(float x, double y) {
         if (x == y) {
             return true;
