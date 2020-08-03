@@ -13,12 +13,9 @@ public class Dog {
         this.dad = dad;
         this.breed = breed;
         this.castrate = castrate;
-
-
     }
 
     public Dog() {
-
     }
 
     public String getName() {
@@ -75,7 +72,6 @@ public class Dog {
         } else {
             return "Не кастрирован";
         }
-
     }
 
     public void setCastrate(Boolean castrate) {
@@ -83,30 +79,20 @@ public class Dog {
     }
 
     public String print() {
-
-        Dog haske = new Dog("Болто", "Черный", "Пермь", "Alpha", "Omega", "Хаски", true);
-        String haskeName = haske.getName();
-        String haskeColor = haske.getColor();
-        String haskeAddress = haske.getAddress();
-        String haskeMom = haske.getMom();
-        String haskeDad = haske.getDad();
-        String haskeBreed = haske.getBreed();
-        String haskeCastrate = haske.getCastrate();
-
         StringBuilder sb = new StringBuilder();
-        sb.append("Кличка собаки" + " ").append(haskeName);
+        sb.append("Кличка собаки ").append(getName());
         sb.append("\n");
-        sb.append("Цвет" + " ").append(haskeColor);
+        sb.append("Цвет ").append(getColor());
         sb.append("\n");
-        sb.append("Место проживания" + " ").append(haskeAddress);
+        sb.append("Место проживания ").append(getAddress());
         sb.append("\n");
-        sb.append("Мать" + " ").append(haskeMom);
+        sb.append("Мать ").append(getMom());
         sb.append("\n");
-        sb.append("Отец" + " ").append(haskeDad);
+        sb.append("Отец ").append(getDad());
         sb.append("\n");
-        sb.append("Порода" + " ").append(haskeBreed);
+        sb.append("Порода ").append(getBreed());
         sb.append("\n");
-        sb.append("Кастрирован/не кастрирован" + " ").append(haskeCastrate);
+        sb.append("Кастрирован/не кастрирован ").append(getCastrate());
         return sb.toString();
     }
 
