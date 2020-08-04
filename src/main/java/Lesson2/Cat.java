@@ -2,7 +2,7 @@ package Lesson2;
 
 import java.util.Scanner;
 
-public class Cat extends Print {
+public class Cat extends Animal implements IPrint {
 
     private Boolean vaccinated;
 
@@ -27,7 +27,7 @@ public class Cat extends Print {
         this.vaccinated = vaccinated;
     }
 
-    @Override
+
     public String printIn() {
 
         Scanner in = new Scanner(System.in);

@@ -2,7 +2,7 @@ package Lesson2;
 
 import java.util.Scanner;
 
-public class Dog extends Print {
+public class Dog extends Animal implements IPrint {
 
     private Boolean castrate;
 
@@ -27,7 +27,7 @@ public class Dog extends Print {
         this.castrate = castrate;
     }
 
-    @Override
+
     public String printIn() {
 
         Scanner in = new Scanner(System.in);
@@ -59,7 +59,7 @@ public class Dog extends Print {
         sb.append("\n");
         sb.append("Порода ").append(getBreed());
         sb.append("\n");
-        sb.append("Кастрирован/ не кастрирован").append(getCastrate());
+        sb.append("Кастрирован/ не кастрирован ").append(getCastrate());
 
         return sb.toString();
     }
