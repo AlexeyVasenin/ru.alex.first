@@ -1,6 +1,5 @@
 package Lesson2;
 
-import java.util.Scanner;
 
 public class Dog extends Animal implements IPrint {
 
@@ -27,24 +26,7 @@ public class Dog extends Animal implements IPrint {
         this.castrate = castrate;
     }
 
-
-    public String printIn() {
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Введите кличку собаки");
-        name = in.nextLine();
-        System.out.println("Введите цвет");
-        color = in.nextLine();
-        System.out.println("Введите место проживания");
-        address = in.nextLine();
-        System.out.println("Введите Мать");
-        mom = in.nextLine();
-        System.out.println("Введите Отца");
-        dad = in.nextLine();
-        System.out.println("Введите Породу");
-        breed = in.nextLine();
-        System.out.println("Кастрирован(true)/ не кастрирован(false)");
-        castrate = in.nextBoolean();
+    public String printOut() {
 
         StringBuilder sb = new StringBuilder();
         sb.append("Кличка животного ").append(getName());

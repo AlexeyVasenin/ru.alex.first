@@ -1,6 +1,5 @@
 package Lesson2;
 
-import java.util.Scanner;
 
 public class Cat extends Animal implements IPrint {
 
@@ -27,24 +26,7 @@ public class Cat extends Animal implements IPrint {
         this.vaccinated = vaccinated;
     }
 
-
-    public String printIn() {
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Введите кличку кота(кошки)");
-        name = in.nextLine();
-        System.out.println("Введите цвет");
-        color = in.nextLine();
-        System.out.println("Введите место проживания");
-        address = in.nextLine();
-        System.out.println("Введите Мать");
-        mom = in.nextLine();
-        System.out.println("Введите Отца");
-        dad = in.nextLine();
-        System.out.println("Введите Породу");
-        breed = in.nextLine();
-        System.out.println("Привит(true)/ не привит(false)");
-        vaccinated = in.nextBoolean();
+    public String printOut() {
 
         StringBuilder sb = new StringBuilder();
         sb.append("Кличка животного ").append(getName());
@@ -59,7 +41,8 @@ public class Cat extends Animal implements IPrint {
         sb.append("\n");
         sb.append("Порода ").append(getBreed());
         sb.append("\n");
-        sb.append(" Привит/ не привит ").append(getVaccinated());
+        sb.append("Привит/ не привит ").append(getVaccinated());
+
         return sb.toString();
     }
 }

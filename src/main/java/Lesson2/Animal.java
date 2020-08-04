@@ -65,9 +65,11 @@ public abstract class Animal implements IPrint {
         this.breed = breed;
     }
 
-    public String printIn() {
+    public String printOut() {
         return null;
     }
+
+
 }
 
 
