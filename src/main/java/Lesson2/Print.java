@@ -2,36 +2,74 @@ package Lesson2;
 
 import java.util.Scanner;
 
-public class Dog extends Print {
+public class Print {
 
-    private Boolean castrate;
+    String name, color, address, mom, dad, breed;
 
-    public Dog(String name, String color, String address, String mom, String dad, String breed, Boolean castrate) {
-        super(name, color, address, mom, dad, breed);
-        this.castrate = castrate;
+    public Print(String name, String color, String address, String mom, String dad, String breed) {
+        this.name = name;
+        this.color = color;
+        this.address = address;
+        this.mom = mom;
+        this.dad = dad;
+        this.breed = breed;
     }
 
-    public Dog() {
-        super();
+    public Print() {
     }
 
-    public String getCastrate() {
-        if (castrate) {
-            return "Кастрирован";
-        } else {
-            return "Не кастрирован";
-        }
+    public String getName() {
+        return name;
     }
 
-    public void setCastrate(Boolean castrate) {
-        this.castrate = castrate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMom() {
+        return mom;
+    }
+
+    public void setMom(String mom) {
+        this.mom = mom;
+    }
+
+    public String getDad() {
+        return dad;
+    }
+
+    public void setDad(String dad) {
+        this.dad = dad;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
     public String printIn() {
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Введите кличку собаки");
+        System.out.println("Введите кличку животного");
         name = in.nextLine();
         System.out.println("Введите цвет");
         color = in.nextLine();
@@ -43,8 +81,6 @@ public class Dog extends Print {
         dad = in.nextLine();
         System.out.println("Введите Породу");
         breed = in.nextLine();
-        System.out.println("Кастрирован(true)/ не кастрирован(false)");
-        castrate = in.nextBoolean();
 
         StringBuilder sb = new StringBuilder();
         sb.append("Кличка животного ").append(getName());
@@ -59,11 +95,10 @@ public class Dog extends Print {
         sb.append("\n");
         sb.append("Порода ").append(getBreed());
         sb.append("\n");
-        sb.append("Кастрирован/ не кастрирован").append(getCastrate());
-
         return sb.toString();
     }
 }
+
 
 
 
