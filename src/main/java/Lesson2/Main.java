@@ -54,7 +54,6 @@ public class Main {
         catList.put(ice1, "1");
 
         for (Cat cat : catList.keySet()) {
-
             System.out.println("Введите кличку кота/кошки");
             cat.setName(in.nextLine());
 
