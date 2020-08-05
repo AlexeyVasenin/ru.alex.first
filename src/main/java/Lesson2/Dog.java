@@ -11,7 +11,6 @@ public class Dog extends Animal implements IPrint {
     }
 
     public Dog() {
-        super();
     }
 
     public String getCastrate() {
@@ -29,7 +28,7 @@ public class Dog extends Animal implements IPrint {
     public String printOut() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Кличка животного ").append(getName());
+        sb.append("Кличка собаки ").append(getName());
         sb.append("\n");
         sb.append("Цвет ").append(getColor());
         sb.append("\n");

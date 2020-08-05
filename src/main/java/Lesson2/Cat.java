@@ -11,7 +11,6 @@ public class Cat extends Animal implements IPrint {
     }
 
     public Cat() {
-        super();
     }
 
     public String getVaccinated() {
