@@ -26,5 +26,7 @@ public interface IPrint {
 
     void setBreed(String breed);
 
+    Boolean intToBool(Integer i);
+
     String printOut();
 }

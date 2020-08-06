@@ -4,14 +4,16 @@ package Lesson2;
 public abstract class Animal implements IPrint {
 
     String name, color, address, mom, dad, breed;
+    Integer i;
 
-    public Animal(String name, String color, String address, String mom, String dad, String breed) {
+    public Animal(String name, String color, String address, String mom, String dad, String breed, Integer i) {
         this.name = name;
         this.color = color;
         this.address = address;
         this.mom = mom;
         this.dad = dad;
         this.breed = breed;
+        this.i = i;
     }
 
     public Animal() {
@@ -63,6 +65,15 @@ public abstract class Animal implements IPrint {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    public Boolean intToBool(Integer i) {
+
+        if ((i == 0) || (i == 1)) {
+            return i != 0;
+        } else {
+            throw new IllegalArgumentException("Входное значение может быть равно только 0 или 1 !");
+        }
     }
 
     public String printOut() {

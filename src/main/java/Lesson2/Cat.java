@@ -5,9 +5,9 @@ public class Cat extends Animal implements IPrint {
 
     private Boolean vaccinated;
 
-    public Cat(String name, String color, String address, String mom, String dad, String breed, Boolean vaccinated) {
-        super(name, color, address, mom, dad, breed);
-        this.vaccinated = vaccinated;
+    public Cat(String name, String color, String address, String mom, String dad, String breed, Integer i) {
+        super(name, color, address, mom, dad, breed, i);
+        this.vaccinated = intToBool(i);
     }
 
     public Cat() {
@@ -21,8 +21,8 @@ public class Cat extends Animal implements IPrint {
         }
     }
 
-    public void setVaccinated(Boolean vaccinated) {
-        this.vaccinated = vaccinated;
+    public void setVaccinated(Integer i) {
+        this.vaccinated = intToBool(i);
     }
 
     public String printOut() {
