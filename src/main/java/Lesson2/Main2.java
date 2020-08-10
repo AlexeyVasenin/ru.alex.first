@@ -1,8 +1,6 @@
 package Lesson2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main2 {
 
@@ -11,18 +9,21 @@ public class Main2 {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<Dog> dogList = new ArrayList<>();
-
+//      Ввод количества объектов в листе и Map
         System.out.println("Введите число обьектов");
         int n;
         try {
             n = Integer.parseInt(in.nextLine());
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Допущенна ошибка! повторите ввод число обьектов");
             n = Integer.parseInt(in.nextLine());
         }
 
+//      ArrayList Объектов типа Dog
+        ArrayList<Dog> dogList = new ArrayList<>();
 
+//      Цикл создания и запись обектов типа Dog
         for (int i = 0; i < n; i++) {
             Dog dog = new Dog();
 
@@ -54,13 +55,32 @@ public class Main2 {
 
             dogList.add(i, dog);
         }
-
+//  `
+//      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
             System.out.println(dog.printOut());
         }
-
+//
+//      Лист с типом объекта Dog
+        List<Dog> listDog = new ArrayList<>();
+//
+//      Записываем размер Arraylist dogList в переменную
+        int sizeList = dogList.size();
+//
+//      Генерируем рандомное число обектов в зависимости от размера ArrayList
+        int sumObject = (int) (Math.random() * ++sizeList) + 1;
+//
+//      Цикл изъятия рандомного колическа и рандомных объекто и ArrayList-a и запись этих объектов в List.
+        for (int x = 0; x <= sumObject; x++) {
+            int iIndex = (int) (Math.random() * sizeList);
+            Dog dog = dogList.get(iIndex);
+            listDog.add(dog);
+        }
+//
+//      Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();
-
+//
+//      Цикл создания и запись объектов типа Cat.
         for (int i = 0; i < n; i++) {
             Cat cat = new Cat();
 
@@ -92,11 +112,10 @@ public class Main2 {
 
             catList.put(i, cat);
         }
-
-        for (Cat cat : catList.values()) {
-            System.out.println("Животное" + "\n" + cat.printOut());
+//
+//      Вывод всех обектов типа Cat
+        for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
+            System.out.println("Животное #" + cat.getKey() + "\n" + cat.getValue().printOut());
         }
-
-
     }
 }
