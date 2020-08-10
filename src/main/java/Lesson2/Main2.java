@@ -48,15 +48,15 @@ public class Main2 {
                 System.out.println("Кастрирован(1)/ не кастрирован(0)");
                 dog.setCastrate(Integer.parseInt(in.nextLine()));
             } catch (Exception e) {
-                System.out.println("Вводимые значения могут быть только 0 или 1");
-                dog.setCastrate(Integer.parseInt(in.nextLine()));
+                e.printStackTrace();
+                i--;
             }
 
             dogList.add(i, dog);
         }
 
-        for (int x = 0; x < n; x++) {
-            System.out.println("Животное № " + x + "\n" + dogList.get(x).printOut());
+        for (Dog dog : dogList) {
+            System.out.println(dog.printOut());
         }
 
         HashMap<Integer, Cat> catList = new HashMap<>();
@@ -86,8 +86,8 @@ public class Main2 {
                 System.out.println("Введите привит(1)/ не привит(0)");
                 cat.setVaccinated(Integer.parseInt(in.nextLine()));
             } catch (Exception e) {
-                System.out.println("Значение могут быть только 0 или 1");
-                cat.setVaccinated(Integer.parseInt(in.nextLine()));
+                e.printStackTrace();
+                i--;
             }
 
             catList.put(i, cat);
