@@ -70,7 +70,7 @@ public class Main2 {
 //      Генерируем рандомное число обектов в зависимости от размера ArrayList
         int sumObject = (int) (Math.random() * ++sizeList) + 1;
 //
-//      Цикл изъятия рандомного колическа и рандомных объекто и ArrayList-a и запись этих объектов в List.
+//      Цикл изъятия кол-во объектов (sumObject) и рандомных объекто и ArrayList-a и запись этих объектов в List.
         for (int x = 0; x <= sumObject; x++) {
             int iIndex = (int) (Math.random() * sizeList);
             Dog dog = dogList.get(iIndex);
