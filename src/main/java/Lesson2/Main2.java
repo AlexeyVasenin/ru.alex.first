@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main2 {
 
-
+//TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
@@ -12,6 +12,8 @@ public class Main2 {
 //      Ввод количества объектов в листе и Map
         System.out.println("Введите число обьектов");
         int n;
+
+        //TODO: А если я 2 раза введу не правильно?
         try {
             n = Integer.parseInt(in.nextLine());
         } catch (Exception e) {
@@ -50,14 +52,17 @@ public class Main2 {
                 dog.setCastrate(Integer.parseInt(in.nextLine()));
             } catch (Exception e) {
                 e.printStackTrace();
+                //TODO: а если i = 0?
                 i--;
             }
 
             dogList.add(i, dog);
         }
+        //TODO:Зачем закоментированы пустые строки?
 //  `
 //      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
+            //TODO:Сделай более читаемый вывод. Весь вывод сливается в 1
             System.out.println(dog.printOut());
         }
 //
@@ -65,17 +70,22 @@ public class Main2 {
         List<Dog> listDog = new ArrayList<>();
 //
 //      Записываем размер Arraylist dogList в переменную
+        //TODO: Зачем ещё 1 переменная, если значение и так есть?
         int sizeList = dogList.size();
 //
 //      Генерируем рандомное число обектов в зависимости от размера ArrayList
+        /*TODO: Не правильно генеришь
+         http://developer.alexanderklimov.ru/android/java/random.php*/
         int sumObject = (int) (Math.random() * ++sizeList) + 1;
 //
 //      Цикл изъятия кол-во объектов (sumObject) и рандомных объекто и ArrayList-a и запись этих объектов в List.
+        //TODO: не работает
         for (int x = 0; x <= sumObject; x++) {
             int iIndex = (int) (Math.random() * sizeList);
             Dog dog = dogList.get(iIndex);
             listDog.add(dog);
         }
+        //TODO: где вывод?
 //
 //      Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();

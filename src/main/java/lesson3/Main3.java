@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Main3 {
     public static void main(String[] args) throws Exception {
-
-        CSVWriter write = new CSVWriter(new FileWriter("test-csv\\testCSVWrite.csv"), ';');
+//TODO:Нет такой папки
+        CSVWriter write = new CSVWriter(new FileWriter("testCSVWrite.csv"), ';');
         List<String[]> theRows = new ArrayList<>();
         String[] header = new String[]{"id", "number"};
         theRows.add(header);
