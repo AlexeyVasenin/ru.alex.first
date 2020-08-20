@@ -4,24 +4,27 @@ import java.util.*;
 
 public class Main2 {
 
-//TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
+    //TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
 //      Ввод количества объектов в листе и Map
-        System.out.println("Введите число обьектов");
-        int n;
+        System.out.println("Введите кол-во животных(не менее 1)");
+        int n = 0;
 
         //TODO: А если я 2 раза введу не правильно?
-        try {
-            n = Integer.parseInt(in.nextLine());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Допущенна ошибка! повторите ввод число обьектов");
-            n = Integer.parseInt(in.nextLine());
-        }
+        while (in.hasNextInt() || n < 1) {
 
+            try {
+
+                n = Integer.parseInt(in.nextLine());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Допущенна ошибка! повторите ввод число обьектов");
+            }
+        }
 //      ArrayList Объектов типа Dog
         ArrayList<Dog> dogList = new ArrayList<>();
 
@@ -58,38 +61,45 @@ public class Main2 {
 
             dogList.add(i, dog);
         }
-        //TODO:Зачем закоментированы пустые строки?
-//  `
+
 //      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
             //TODO:Сделай более читаемый вывод. Весь вывод сливается в 1
-            System.out.println(dog.printOut());
+            // TODO: 20.08.2020 Сделал более читаемый вывод
+            System.out.println("Собка #" + "\n" + dog.printOut());
+            System.out.println();
         }
-//
 //      Лист с типом объекта Dog
         List<Dog> listDog = new ArrayList<>();
-//
-//      Записываем размер Arraylist dogList в переменную
-        //TODO: Зачем ещё 1 переменная, если значение и так есть?
-        int sizeList = dogList.size();
-//
-//      Генерируем рандомное число обектов в зависимости от размера ArrayList
+
+        //Генерируем рандомное число обектов в зависимости от размера ArrayList
         /*TODO: Не правильно генеришь
-         http://developer.alexanderklimov.ru/android/java/random.php*/
-        int sumObject = (int) (Math.random() * ++sizeList) + 1;
-//
-//      Цикл изъятия кол-во объектов (sumObject) и рандомных объекто и ArrayList-a и запись этих объектов в List.
+        http://developer.alexanderklimov.ru/android/java/random.php*/
+        //TODO: 20.08.2020 Исправил генерацию числа обектов.
+        Random randomObject;
+        randomObject = new Random();
+        int sumObject = randomObject.nextInt(n) + 1;
+
+        //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из ArrayList-a и запись этих объектов в List.
         //TODO: не работает
-        for (int x = 0; x <= sumObject; x++) {
-            int iIndex = (int) (Math.random() * sizeList);
+        // TODO: 20.08.2020 Исправил ошибку
+        for (int x = 0; x < sumObject; x++) {
+            Random randomIndex = new Random();
+            int iIndex = randomIndex.nextInt(n);
             Dog dog = dogList.get(iIndex);
             listDog.add(dog);
         }
         //TODO: где вывод?
-//
+        //TODO: 20.08.2020 Сделал вывод.
+//      Вывод листа
+        for (Dog dog : listDog) {
+            System.out.println(dog.printOut());
+            System.out.println();
+        }
+
 //      Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();
-//
+
 //      Цикл создания и запись объектов типа Cat.
         for (int i = 0; i < n; i++) {
             Cat cat = new Cat();
@@ -122,10 +132,16 @@ public class Main2 {
 
             catList.put(i, cat);
         }
-//
+
+        for (Dog dog : listDog) {
+            System.out.println(dog.printOut());
+        }
+
 //      Вывод всех обектов типа Cat
         for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
-            System.out.println("Животное #" + cat.getKey() + "\n" + cat.getValue().printOut());
+            System.out.println("Кот/кошка #" + cat.getKey() + "\n" + cat.getValue().printOut());
         }
     }
+
+
 }
