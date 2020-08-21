@@ -2,10 +2,10 @@ package Lesson2;
 
 import java.util.*;
 
-public class Main2 {
+public class Lesson2 {
 
     //TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
@@ -14,17 +14,19 @@ public class Main2 {
         int n = 0;
 
         //TODO: А если я 2 раза введу не правильно?
-        while (in.hasNextInt() || n < 1) {
 
-            try {
+        try {
 
-                n = Integer.parseInt(in.nextLine());
+            n = Integer.parseInt(in.nextLine());
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Допущенна ошибка! повторите ввод число обьектов");
-            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            System.out.println("Допущенна ошибка! повторите ввод число обьектов");
+            n = Integer.parseInt(in.nextLine());
+            return;
         }
+
 //      ArrayList Объектов типа Dog
         ArrayList<Dog> dogList = new ArrayList<>();
 
@@ -70,7 +72,7 @@ public class Main2 {
             System.out.println();
         }
 //      Лист с типом объекта Dog
-        List<Dog> listDog = new ArrayList<>();
+        List<Dog> list = new ArrayList<>();
 
         //Генерируем рандомное число обектов в зависимости от размера ArrayList
         /*TODO: Не правильно генеришь
@@ -85,14 +87,12 @@ public class Main2 {
         // TODO: 20.08.2020 Исправил ошибку
         for (int x = 0; x < sumObject; x++) {
             Random randomIndex = new Random();
-            int iIndex = randomIndex.nextInt(n);
-            Dog dog = dogList.get(iIndex);
-            listDog.add(dog);
+            list.add(dogList.get(randomIndex.nextInt(n)));
         }
         //TODO: где вывод?
         //TODO: 20.08.2020 Сделал вывод.
 //      Вывод листа
-        for (Dog dog : listDog) {
+        for (Dog dog : list) {
             System.out.println(dog.printOut());
             System.out.println();
         }
@@ -133,11 +133,7 @@ public class Main2 {
             catList.put(i, cat);
         }
 
-        for (Dog dog : listDog) {
-            System.out.println(dog.printOut());
-        }
-
-//      Вывод всех обектов типа Cat
+        //Вывод всех обектов типа Cat
         for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
             System.out.println("Кот/кошка #" + cat.getKey() + "\n" + cat.getValue().printOut());
         }

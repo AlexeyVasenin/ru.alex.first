@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Main3 {
+public class Lesson3 {
     public static void main(String[] args) throws Exception {
 //TODO:Нет такой папки
         CSVWriter write = new CSVWriter(new FileWriter("test-csv\\testCSVWrite.csv"), ';');
