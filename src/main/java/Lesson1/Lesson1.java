@@ -1,7 +1,7 @@
 package Lesson1;
 
 public class Lesson1 {
-    public static void main(String[] args) {
+    public static void main() {
 
 
         //TODO(готово) сделай так что перед выводом строки, собрать эту строку в переменну (со StringBuilder не надо), передать в метод equals для сравнения

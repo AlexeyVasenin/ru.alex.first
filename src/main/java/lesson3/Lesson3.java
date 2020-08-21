@@ -2,14 +2,17 @@ package lesson3;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Lesson3 {
-    public static void main(String[] args) throws Exception {
+    public static void csvWriteToDelete() throws Exception {
 //TODO:Нет такой папки
+        File folder = new File("./test-cav");
+        folder.mkdir();
         CSVWriter write = new CSVWriter(new FileWriter("test-csv\\testCSVWrite.csv"), ';');
         List<String[]> theRows = new ArrayList<>();
         String[] header = new String[]{"id", "number"};

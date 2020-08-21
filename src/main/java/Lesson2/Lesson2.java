@@ -4,14 +4,16 @@ import java.util.*;
 
 public class Lesson2 {
 
-    //TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
-    public void main(String[] args) {
+    //TODO: 21.08.2020 Вынес переменную "n" и сканер из метода
+    private static int n;
+    private static final Scanner in = new Scanner(System.in);
 
-        Scanner in = new Scanner(System.in);
+    //TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
+    //TODO: 21.08.2020 Разделил ввод и вывод для собак и кошек в разныве методы.
+    public static void dogInput() {
 
 //      Ввод количества объектов в листе и Map
-        System.out.println("Введите кол-во животных(не менее 1)");
-        int n = 0;
+        System.out.println("Введите кол-во собак(не менее 1)");
 
         //TODO: А если я 2 раза введу не правильно?
 
@@ -24,7 +26,7 @@ public class Lesson2 {
             e.printStackTrace();
             System.out.println("Допущенна ошибка! повторите ввод число обьектов");
             n = Integer.parseInt(in.nextLine());
-            return;
+
         }
 
 //      ArrayList Объектов типа Dog
@@ -59,6 +61,7 @@ public class Lesson2 {
                 e.printStackTrace();
                 //TODO: а если i = 0?
                 i--;
+
             }
 
             dogList.add(i, dog);
@@ -67,8 +70,8 @@ public class Lesson2 {
 //      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
             //TODO:Сделай более читаемый вывод. Весь вывод сливается в 1
-            // TODO: 20.08.2020 Сделал более читаемый вывод
-            System.out.println("Собка #" + "\n" + dog.printOut());
+            // TODO: 21.08.2020 Сделал более читаемый вывод добавил номер собаки
+            System.out.println("Собка #" + dogList.indexOf(dog) + "\n" + dog.printOut());
             System.out.println();
         }
 //      Лист с типом объекта Dog
@@ -84,7 +87,7 @@ public class Lesson2 {
 
         //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из ArrayList-a и запись этих объектов в List.
         //TODO: не работает
-        // TODO: 20.08.2020 Исправил ошибку
+        //TODO: 21.08.2020 Откорректировал код
         for (int x = 0; x < sumObject; x++) {
             Random randomIndex = new Random();
             list.add(dogList.get(randomIndex.nextInt(n)));
@@ -93,9 +96,30 @@ public class Lesson2 {
         //TODO: 20.08.2020 Сделал вывод.
 //      Вывод листа
         for (Dog dog : list) {
-            System.out.println(dog.printOut());
+            System.out.println("Собка #" + list.indexOf(dog) + "\n" + dog.printOut());
             System.out.println();
         }
+    }
+
+    public static void catInput() {
+
+//      Ввод количества объектов в листе и Map
+        System.out.println("Введите кол-во кошек(не менее 1)");
+
+        //TODO: А если я 2 раза введу не правильно?
+
+        try {
+
+            n = Integer.parseInt(in.nextLine());
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            System.out.println("Допущенна ошибка! повторите ввод число обьектов");
+            n = Integer.parseInt(in.nextLine());
+            return;
+        }
+
 
 //      Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();
@@ -138,6 +162,6 @@ public class Lesson2 {
             System.out.println("Кот/кошка #" + cat.getKey() + "\n" + cat.getValue().printOut());
         }
     }
-
-
 }
+
+
