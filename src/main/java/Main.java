@@ -4,6 +4,7 @@ import lesson3.Lesson3;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -35,6 +36,9 @@ public class Main {
                 break;
             }
             case "CSV": {
+
+                System.out.println("*Чтение файла Lesson 3.1*" + "\n");
+
                 BufferedReader reader = new BufferedReader(new FileReader("Lesson/Lesson 3.1.txt"));
                 StringBuilder stringBuilder = new StringBuilder();
                 String value = reader.readLine();
@@ -47,6 +51,7 @@ public class Main {
                 System.out.println(stringBuilder.toString());
 
                 Lesson3.csvWriteToDelete();
+                break;
             }
 
 
