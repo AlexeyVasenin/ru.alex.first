@@ -1,7 +1,9 @@
 import Lesson2.Lesson2;
 import lesson3.Lesson3;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,9 +18,14 @@ public class Main {
         System.out.println(Arrays.toString(fileLessons));
         System.out.println();
 
-        System.out.println("Введите Cat or Dog or Csv");
 
-        switch (input.nextLine().toUpperCase()) {
+        String in = "";
+        while (!in.equals("CAT") && !in.equals("DOG") && !in.equals("CSV")) {
+            System.out.println("Введите Cat or Dog or Csv");
+            in = input.nextLine().toUpperCase();
+        }
+
+        switch (in) {
             case "DOG": {
                 Lesson2.dogInput();
                 break;
@@ -28,8 +35,20 @@ public class Main {
                 break;
             }
             case "CSV": {
+                BufferedReader reader = new BufferedReader(new FileReader("Lesson/Lesson 3.1.txt"));
+                StringBuilder stringBuilder = new StringBuilder();
+                String value = reader.readLine();
+                while (value != null) {
+                    stringBuilder.append(value);
+                    stringBuilder.append("\n");
+                    value = reader.readLine();
+                }
+                reader.close();
+                System.out.println(stringBuilder.toString());
+
                 Lesson3.csvWriteToDelete();
             }
+
 
         }
     }
