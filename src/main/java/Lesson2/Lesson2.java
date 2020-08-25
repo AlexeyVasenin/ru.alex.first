@@ -8,7 +8,8 @@ public class Lesson2 {
     private static final Scanner in = new Scanner(System.in);
 
     //TODO: почитай про static и почему его надо убрать
-    public static void dogInput() {
+    // TODO: 25.08.2020 Почитал
+    public void dogInputToWrite() {
 
 //      Ввод количества объектов в листе и Map
         System.out.println("Введите кол-во собак(не менее 1)");
@@ -22,7 +23,7 @@ public class Lesson2 {
         } catch (Exception e) {
 
             e.printStackTrace();
-            System.out.println("Допущенна ошибка! повторите ввод число обьектов");
+            System.out.println("Допущена ошибка! повторите ввод число объектов");
             n = Integer.parseInt(in.nextLine());
 
         }
@@ -68,7 +69,8 @@ public class Lesson2 {
 //      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
             //TODO: Для пользователя не надо выводить index = 0, так как отчёт для обычного человека начинается с 1
-            System.out.println("Собка #" + dogList.indexOf(dog) + "\n" + dog.printOut());
+            // TODO: 25.08.2020 Исправил вывод номера объекта.
+            System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog.printOut());
             System.out.println();
         }
 //      Лист с типом объекта Dog
@@ -76,25 +78,25 @@ public class Lesson2 {
 
         //Генерируем рандомное число обектов в зависимости от размера ArrayList
         //TODO: Сделай иницализацию объекта в 1 строку, для читаемости кода
-        Random randomObject;
-        randomObject = new Random();
-        int sumObject = randomObject.nextInt(n) + 1;
+        //TODO: 25.08.2020 Исправил
+        Random random = new Random();
+        int sumObject = random.nextInt(n) + 1;
 
         //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из ArrayList-a и запись этих объектов в List.
         for (int x = 0; x < sumObject; x++) {
             //TODO: У тебя уже есть Random зачем ещё?
-            Random randomIndex = new Random();
-            list.add(dogList.get(randomIndex.nextInt(n)));
+            // TODO: 25.08.2020 Действительно ) тупанул.
+            list.add(dogList.get(random.nextInt(n)));
         }
 
         //Вывод листа
         for (Dog dog : list) {
-            System.out.println("Собка #" + list.indexOf(dog) + "\n" + dog.printOut());
+            System.out.println("Собка #" + (list.indexOf(dog) + 1) + "\n" + dog.printOut());
             System.out.println();
         }
     }
 
-    public static void catInput() {
+    public void catInputToWrite() {
 
 //      Ввод количества объектов в листе и Map
         System.out.println("Введите кол-во кошек(не менее 1)");
@@ -104,6 +106,9 @@ public class Lesson2 {
         try {
 
             n = Integer.parseInt(in.nextLine());
+            if (n == 0) {
+                return;
+            }
 
         } catch (Exception e) {
 
@@ -112,7 +117,6 @@ public class Lesson2 {
             n = Integer.parseInt(in.nextLine());
             return;
         }
-
 
 //      Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();
@@ -152,7 +156,7 @@ public class Lesson2 {
 
         //Вывод всех обектов типа Cat
         for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
-            System.out.println("Кот/кошка #" + cat.getKey() + "\n" + cat.getValue().printOut());
+            System.out.println("Кот/кошка #" + (cat.getKey() + 1) + "\n" + cat.getValue().printOut());
         }
     }
 }

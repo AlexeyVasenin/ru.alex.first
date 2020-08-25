@@ -2,7 +2,7 @@ package Lesson1;
 
 public class Lesson1 {
     //TODO: почитай про static и почему его надо убрать
-    public static void main() {
+    public void lesson1() {
         //Сложение сторок
 
         //Переменные

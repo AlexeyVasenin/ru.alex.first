@@ -13,13 +13,14 @@ import java.util.List;
 
 public class Lesson3 {
     //TODO: почитай про static и почему его надо убрать
-    public static void csvWriteToDelete() throws Exception {
+    //TODO: 25.08.2020 Исправлено
+    public void csvWriteToDelete() throws Exception {
 
-        File folder = new File("./test-csv");
+        File folder = new File("test-csv");
         folder.mkdir();
 
         String nameFileCsv = "testCSVWrite.csv";
-        File fileCsv = new File("test-csv/" + nameFileCsv);
+        File fileCsv = new File(folder + "/" + nameFileCsv);
         System.out.println("*Создан файл " + nameFileCsv + "*");
 
         System.out.println("*Запись и результат чтения файла* " + nameFileCsv);
@@ -40,7 +41,7 @@ public class Lesson3 {
         write.writeAll(theRows);
         write.close();
 
-        CSVReader reader = new CSVReader(new FileReader("test-csv/testCSVWrite.csv"), ';');
+        CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(Arrays.toString(nextLine));
