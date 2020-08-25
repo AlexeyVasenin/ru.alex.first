@@ -12,9 +12,8 @@ import java.util.List;
 
 
 public class Lesson3 {
+    //TODO: почитай про static и почему его надо убрать
     public static void csvWriteToDelete() throws Exception {
-        //TODO:Нет такой папки
-        // TODO: 24.08.2020 Добавил создание папки
 
         File folder = new File("./test-csv");
         folder.mkdir();
@@ -41,16 +40,12 @@ public class Lesson3 {
         write.writeAll(theRows);
         write.close();
 
-        // TODO: 24.08.2020 Чтение файла
-
         CSVReader reader = new CSVReader(new FileReader("test-csv/testCSVWrite.csv"), ';');
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(Arrays.toString(nextLine));
         }
         reader.close();
-
-        // TODO: 24.08.2020 Удаление файла из папки.
 
         try {
             if (fileCsv.delete()) {

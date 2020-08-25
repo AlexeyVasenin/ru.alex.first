@@ -4,12 +4,10 @@ import java.util.*;
 
 public class Lesson2 {
 
-    //TODO: 21.08.2020 Вынес переменную "n" и сканер из метода
     private static int n;
     private static final Scanner in = new Scanner(System.in);
 
-    //TODO GLOBAL: Для пользователя не понятно что надо вводить новую собаку/кошку, раздели
-    //TODO: 21.08.2020 Разделил ввод и вывод для собак и кошек в разныве методы.
+    //TODO: почитай про static и почему его надо убрать
     public static void dogInput() {
 
 //      Ввод количества объектов в листе и Map
@@ -69,8 +67,7 @@ public class Lesson2 {
 
 //      Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
-            //TODO:Сделай более читаемый вывод. Весь вывод сливается в 1
-            // TODO: 21.08.2020 Сделал более читаемый вывод добавил номер собаки
+            //TODO: Для пользователя не надо выводить index = 0, так как отчёт для обычного человека начинается с 1
             System.out.println("Собка #" + dogList.indexOf(dog) + "\n" + dog.printOut());
             System.out.println();
         }
@@ -78,23 +75,19 @@ public class Lesson2 {
         List<Dog> list = new ArrayList<>();
 
         //Генерируем рандомное число обектов в зависимости от размера ArrayList
-        /*TODO: Не правильно генеришь
-        http://developer.alexanderklimov.ru/android/java/random.php*/
-        //TODO: 20.08.2020 Исправил генерацию числа обектов.
+        //TODO: Сделай иницализацию объекта в 1 строку, для читаемости кода
         Random randomObject;
         randomObject = new Random();
         int sumObject = randomObject.nextInt(n) + 1;
 
         //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из ArrayList-a и запись этих объектов в List.
-        //TODO: не работает
-        //TODO: 21.08.2020 Откорректировал код
         for (int x = 0; x < sumObject; x++) {
+            //TODO: У тебя уже есть Random зачем ещё?
             Random randomIndex = new Random();
             list.add(dogList.get(randomIndex.nextInt(n)));
         }
-        //TODO: где вывод?
-        //TODO: 20.08.2020 Сделал вывод.
-//      Вывод листа
+
+        //Вывод листа
         for (Dog dog : list) {
             System.out.println("Собка #" + list.indexOf(dog) + "\n" + dog.printOut());
             System.out.println();

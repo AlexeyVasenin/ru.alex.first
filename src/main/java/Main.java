@@ -4,7 +4,6 @@ import lesson3.Lesson3;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -19,13 +18,15 @@ public class Main {
         System.out.println(Arrays.toString(fileLessons));
         System.out.println();
 
-
         String in = "";
+        //TODO: лучше приводить к нижнему регистру, т.к. в в верхнем регистре пишутся имена констант
+        //TODO: Т.к. ты используешь сравнение с заранее известными константами, их лучше вынести из дела программы
         while (!in.equals("CAT") && !in.equals("DOG") && !in.equals("CSV")) {
             System.out.println("Введите Cat or Dog or Csv");
             in = input.nextLine().toUpperCase();
         }
 
+        //TODO:Нет Lesson 1
         switch (in) {
             case "DOG": {
                 Lesson2.dogInput();
@@ -38,7 +39,7 @@ public class Main {
             case "CSV": {
 
                 System.out.println("*Чтение файла Lesson 3.1*" + "\n");
-
+                //TODO: Сделай отдельный метод для вывода заданий из файла, для всех заданий
                 BufferedReader reader = new BufferedReader(new FileReader("Lesson/Lesson 3.1.txt"));
                 StringBuilder stringBuilder = new StringBuilder();
                 String value = reader.readLine();
