@@ -11,27 +11,30 @@ public class Lesson2 {
     // TODO: 25.08.2020 Почитал
     public void dogInputToWrite() {
 
-//      Ввод количества объектов в листе и Map
+        //Ввод количества объектов в листе и Map
         System.out.println("Введите кол-во собак(не менее 1)");
 
         //TODO: А если я 2 раза введу не правильно?
+        // TODO: 27.08.2020 С этим вопросом хочу поговорить по дискорд.
 
         try {
 
             n = Integer.parseInt(in.nextLine());
+            if (n == 0) {
+                return;
+            }
 
         } catch (Exception e) {
 
             e.printStackTrace();
-            System.out.println("Допущена ошибка! повторите ввод число объектов");
-            n = Integer.parseInt(in.nextLine());
+            System.out.println("Допущена ошибка");
 
         }
 
-//      ArrayList Объектов типа Dog
+        //ArrayList Объектов типа Dog
         ArrayList<Dog> dogList = new ArrayList<>();
 
-//      Цикл создания и запись обектов типа Dog
+        //Цикл создания и запись обектов типа Dog
         for (int i = 0; i < n; i++) {
             Dog dog = new Dog();
 
@@ -59,21 +62,26 @@ public class Lesson2 {
             } catch (Exception e) {
                 e.printStackTrace();
                 //TODO: а если i = 0?
-                i--;
-
+                // TODO: 27.08.2020 С этим вопросом хочу поговорить по дискорду
+                if (i == 0) {
+                    return;
+                } else {
+                    i--;
+                }
             }
 
             dogList.add(i, dog);
         }
 
-//      Вывод всех объектов типа Dog
+        //Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
-            //TODO: Для пользователя не надо выводить index = 0, так как отчёт для обычного человека начинается с 1
+            //TODO: Для пользователя не надо выводить index = 0, так как
+            // отчёт для обычного человека начинается с 1
             // TODO: 25.08.2020 Исправил вывод номера объекта.
             System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog.printOut());
             System.out.println();
         }
-//      Лист с типом объекта Dog
+        //Лист с типом объекта Dog
         List<Dog> list = new ArrayList<>();
 
         //Генерируем рандомное число обектов в зависимости от размера ArrayList
@@ -82,7 +90,8 @@ public class Lesson2 {
         Random random = new Random();
         int sumObject = random.nextInt(n) + 1;
 
-        //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из ArrayList-a и запись этих объектов в List.
+        //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из
+        // ArrayList-a и запись этих объектов в List.
         for (int x = 0; x < sumObject; x++) {
             //TODO: У тебя уже есть Random зачем ещё?
             // TODO: 25.08.2020 Действительно ) тупанул.
@@ -98,7 +107,7 @@ public class Lesson2 {
 
     public void catInputToWrite() {
 
-//      Ввод количества объектов в листе и Map
+        //Ввод количества объектов в листе и Map
         System.out.println("Введите кол-во кошек(не менее 1)");
 
         //TODO: А если я 2 раза введу не правильно?
@@ -113,15 +122,14 @@ public class Lesson2 {
         } catch (Exception e) {
 
             e.printStackTrace();
-            System.out.println("Допущенна ошибка! повторите ввод число обьектов");
-            n = Integer.parseInt(in.nextLine());
-            return;
+            System.out.println("Допущенна ошибка!");
+
         }
 
-//      Map объектов типа Cat
+        //Map объектов типа Cat
         HashMap<Integer, Cat> catList = new HashMap<>();
 
-//      Цикл создания и запись объектов типа Cat.
+        //Цикл создания и запись объектов типа Cat.
         for (int i = 0; i < n; i++) {
             Cat cat = new Cat();
 
@@ -148,7 +156,12 @@ public class Lesson2 {
                 cat.setVaccinated(Integer.parseInt(in.nextLine()));
             } catch (Exception e) {
                 e.printStackTrace();
-                i--;
+                if (i == 0) {
+                    return;
+                } else {
+                    i--;
+                }
+
             }
 
             catList.put(i, cat);
