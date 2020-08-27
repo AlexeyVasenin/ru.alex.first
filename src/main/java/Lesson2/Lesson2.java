@@ -7,8 +7,6 @@ public class Lesson2 {
     private static int n;
     private static final Scanner in = new Scanner(System.in);
 
-    //TODO: почитай про static и почему его надо убрать
-    // TODO: 25.08.2020 Почитал
     public void dogInputToWrite() {
 
         //Ввод количества объектов в листе и Map
@@ -75,9 +73,6 @@ public class Lesson2 {
 
         //Вывод всех объектов типа Dog
         for (Dog dog : dogList) {
-            //TODO: Для пользователя не надо выводить index = 0, так как
-            // отчёт для обычного человека начинается с 1
-            // TODO: 25.08.2020 Исправил вывод номера объекта.
             System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog.printOut());
             System.out.println();
         }
@@ -85,16 +80,12 @@ public class Lesson2 {
         List<Dog> list = new ArrayList<>();
 
         //Генерируем рандомное число обектов в зависимости от размера ArrayList
-        //TODO: Сделай иницализацию объекта в 1 строку, для читаемости кода
-        //TODO: 25.08.2020 Исправил
         Random random = new Random();
         int sumObject = random.nextInt(n) + 1;
 
         //Цикл изъятия кол-во объектов (sumObject) и рандомных объекто из
         // ArrayList-a и запись этих объектов в List.
         for (int x = 0; x < sumObject; x++) {
-            //TODO: У тебя уже есть Random зачем ещё?
-            // TODO: 25.08.2020 Действительно ) тупанул.
             list.add(dogList.get(random.nextInt(n)));
         }
 

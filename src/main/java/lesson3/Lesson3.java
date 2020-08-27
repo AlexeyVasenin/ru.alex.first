@@ -12,8 +12,6 @@ import java.util.List;
 
 
 public class Lesson3 {
-    //TODO: почитай про static и почему его надо убрать
-    //TODO: 25.08.2020 Исправлено
     public void csvWriteToDelete() throws Exception {
 
         File folder = new File("test-csv");

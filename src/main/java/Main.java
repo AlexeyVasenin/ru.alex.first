@@ -14,6 +14,7 @@ public class Main {
     private static final File folderLessons = new File("Lesson");
     private static final String[] fileLessons = folderLessons.list();
     private static String in = "";
+    //TODO: Констатнты пишутся в верхнем регистре
     private static final String cat = "cat";
     private static final String dog = "dog";
     private static final String csv = "csv";
@@ -33,8 +34,6 @@ public class Main {
 
         }
 
-        //TODO:Нет Lesson 1
-        // TODO: 25.08.2020 Сделал Lesson 1
         switch (in) {
             case "lesson1": {
                 System.out.println(outTextLesson("Lesson 1.txt"));
@@ -43,6 +42,7 @@ public class Main {
                 text.lesson1();
                 break;
             }
+            //TODO: идёт повторение кода, подумай как можно уьрать повторяющийся код и сократить количество case
             case "dog": {
                 System.out.println(outTextLesson("Lesson 2.txt"));
                 System.out.println(outTextLesson("Lesson 2.2.txt"));

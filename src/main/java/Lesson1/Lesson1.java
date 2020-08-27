@@ -1,7 +1,6 @@
 package Lesson1;
 
 public class Lesson1 {
-    //TODO: почитай про static и почему его надо убрать
     public void lesson1() {
         //Сложение сторок
 
