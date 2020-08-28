@@ -16,10 +16,8 @@ public class Lesson1 {
 
         //Сложение строк через StringBuilder
         StringBuilder c = new StringBuilder();
+        c.append(a).append(" ").append(b);
 
-        c.append(a);
-        c.append(" ");
-        c.append(b);
         System.out.println(c.toString());
 
         //Сравнение через equals
@@ -40,7 +38,6 @@ public class Lesson1 {
         //Сравениен результатов через equals.
         System.out.println(equals(result1, result2));
 
-
     }
 
     //Метод Float
@@ -54,15 +51,9 @@ public class Lesson1 {
         return x1 * y1;
     }
 
-
     //Метод сравнения equals
     public static Boolean equals(float x, double y) {
-        //TODO: тут ты возвращаешь булево значение return true/false. Ветвелиние основывается на булевом значение, посмотри как можно сократить до 1 строки. idea предлагает сама это сделать.
-        if (x == y) {
-            return true;
-        } else {
-            return false;
-        }
+        return x == y;
 
     }
 }

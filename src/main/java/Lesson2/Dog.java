@@ -2,11 +2,13 @@ package Lesson2;
 
 public class Dog extends Animal implements IPrint {
 
-
     private Boolean castrate;
 
-    public Dog(String name, String color, String address, String mom, String dad, String breed, Integer i) {
+    public Dog(String name, String color, String address, String mom,
+               String dad, String breed, Integer i) {
+
         super(name, color, address, mom, dad, breed, i);
+
         this.castrate = intToBool(i);
     }
 
@@ -26,7 +28,6 @@ public class Dog extends Animal implements IPrint {
     }
 
     public String printOut() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("Кличка собаки ").append(getName());
         sb.append("\n");

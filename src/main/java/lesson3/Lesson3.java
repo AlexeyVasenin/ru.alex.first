@@ -13,19 +13,15 @@ import java.util.List;
 
 public class Lesson3 {
     public void csvWriteToDelete() throws Exception {
-
         File folder = new File("test-csv");
         folder.mkdir();
 
         String nameFileCsv = "testCSVWrite.csv";
         File fileCsv = new File(folder + "/" + nameFileCsv);
-        System.out.println("*Создан файл " + nameFileCsv + "*");
 
-        System.out.println("*Запись и результат чтения файла* " + nameFileCsv);
         CSVWriter write = new CSVWriter(new FileWriter(fileCsv), ';');
 
         List<String[]> theRows = new ArrayList<>();
-
         String[] header = new String[]{"id", "number"};
         String[] row1 = new String[]{"1", "2"};
         String[] row2 = new String[]{"2", "3"};
@@ -38,8 +34,11 @@ public class Lesson3 {
 
         write.writeAll(theRows);
         write.close();
+    }
 
+    public void readToDeleteCsv() {
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
+
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(Arrays.toString(nextLine));
@@ -48,9 +47,11 @@ public class Lesson3 {
 
         try {
             if (fileCsv.delete()) {
-                System.out.println("\n" + "*Файл " + fileCsv.getName() + " удален*");
+                System.out.println("\n" + "*Файл " + fileCsv.getName() + " " +
+                        "удален*");
             } else {
-                System.out.println("Файл не существует или не может быть удален");
+                System.out.println("Файл не существует или не может быть " +
+                        "удален");
             }
         } catch (Exception e) {
             e.printStackTrace();

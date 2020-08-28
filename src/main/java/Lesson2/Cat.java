@@ -5,8 +5,11 @@ public class Cat extends Animal implements IPrint {
 
     private Boolean vaccinated;
 
-    public Cat(String name, String color, String address, String mom, String dad, String breed, Integer i) {
+    public Cat(String name, String color, String address, String mom,
+               String dad, String breed, Integer i) {
+
         super(name, color, address, mom, dad, breed, i);
+
         this.vaccinated = intToBool(i);
     }
 
@@ -26,7 +29,6 @@ public class Cat extends Animal implements IPrint {
     }
 
     public String printOut() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("Кличка животного ").append(getName());
         sb.append("\n");
