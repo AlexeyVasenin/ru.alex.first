@@ -6,37 +6,55 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 
 public class Lesson3 {
-    public void csvWriteToDelete() throws Exception {
-        File folder = new File("test-csv");
+
+    private static final Scanner input = new Scanner(System.in);
+    String NAMEFOLDER = "test_csv";
+    String DIRECTORY = "test_csv/";
+    String NAMEFILECSV = "Csv.csv";
+
+    public void creatingFolder() {
+        File folder = new File(NAMEFOLDER);
         folder.mkdir();
+    }
 
-        String nameFileCsv = "testCSVWrite.csv";
-        File fileCsv = new File(folder + "/" + nameFileCsv);
+    public void checkedAndDeleteFileCsv() {
+        boolean fileCsv = new File(DIRECTORY + NAMEFILECSV).isFile();
 
-        CSVWriter write = new CSVWriter(new FileWriter(fileCsv), ';');
+        if (fileCsv) {
+            new File(DIRECTORY + NAMEFILECSV).delete();
+        } else {
+            System.out.println("Файл не существует");
+        }
+    }
 
-        List<String[]> theRows = new ArrayList<>();
-        String[] header = new String[]{"id", "number"};
-        String[] row1 = new String[]{"1", "2"};
-        String[] row2 = new String[]{"2", "3"};
-        String[] row3 = new String[]{"3", "4"};
+    public void fileWriteCsv() throws Exception {
+        CSVWriter write;
+        write = new CSVWriter(new FileWriter(NAMEFOLDER + "/" + NAMEFILECSV)
+                , ';');
 
-        theRows.add(header);
-        theRows.add(row1);
-        theRows.add(row2);
-        theRows.add(row3);
+        Random numRandom = new Random();
+
+        Integer number = numRandom.nextInt();
+
+        List<Integer[]> theRows = new ArrayList<>();
+
+        for (int i = 0; i < number; i++) {
+            Integer[] numbers = new Integer[];
+            theRows.add(numbers);
+
+        }
 
         write.writeAll(theRows);
         write.close();
     }
 
-    public void readToDeleteCsv() {
+    public void fileReadCsv() throws Exception {
+        File fileCsv = new File(DIRECTORY + NAMEFILECSV);
+
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
 
         String[] nextLine;
@@ -44,17 +62,5 @@ public class Lesson3 {
             System.out.println(Arrays.toString(nextLine));
         }
         reader.close();
-
-        try {
-            if (fileCsv.delete()) {
-                System.out.println("\n" + "*Файл " + fileCsv.getName() + " " +
-                        "удален*");
-            } else {
-                System.out.println("Файл не существует или не может быть " +
-                        "удален");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

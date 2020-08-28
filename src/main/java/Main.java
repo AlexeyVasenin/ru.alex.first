@@ -37,7 +37,6 @@ public class Main {
                 Lesson1 text = new Lesson1();
 
                 text.lesson1();
-
                 break;
             }
             //TODO: идёт повторение кода, подумай как можно уьрать
@@ -72,8 +71,11 @@ public class Main {
 
                 Lesson3 fileCsvTest = new Lesson3();
 
-                fileCsvTest.csvWriteToDelete();
-
+                fileCsvTest.creatingFolder();
+                fileCsvTest.checkedAndDeleteFileCsv();
+                fileCsvTest.fileWriteCsv();
+                fileCsvTest.fileReadCsv();
+                fileCsvTest.checkedAndDeleteFileCsv();
                 break;
             }
         }
@@ -86,12 +88,10 @@ public class Main {
         String textLesson = reader.readLine();
 
         while (textLesson != null) {
-            outTextLessonAll.append(textLesson);
-            outTextLessonAll.append("\n");
+            outTextLessonAll.append(textLesson).append("\n");
             textLesson = reader.readLine();
         }
         reader.close();
-
         return outTextLessonAll.toString();
     }
 }
