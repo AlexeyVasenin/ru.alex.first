@@ -75,7 +75,7 @@ public class Main {
                 fileCsvTest.checkedAndDeleteFileCsv();
                 fileCsvTest.fileWriteCsv();
                 fileCsvTest.fileReadCsv();
-                fileCsvTest.checkedAndDeleteFileCsv();
+                //fileCsvTest.checkedAndDeleteFileCsv();
                 break;
             }
         }

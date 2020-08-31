@@ -35,17 +35,38 @@ public class Lesson3 {
         CSVWriter write;
         write = new CSVWriter(new FileWriter(NAMEFOLDER + "/" + NAMEFILECSV)
                 , ';');
-
+        List<String[]> theRows = new ArrayList<>();
         Random numRandom = new Random();
 
-        Integer number = numRandom.nextInt();
+        String[] header = new String[]{"numberOne", "numberTwo"};
 
-        List<Integer[]> theRows = new ArrayList<>();
+        theRows.add(header);
 
-        for (int i = 0; i < number; i++) {
-            Integer[] numbers = new Integer[];
+        int n;
+
+        System.out.println("Введите число строк");
+
+        while (true) {
+            try {
+                n = Integer.parseInt(input.nextLine());
+                if (n == 0) {
+                    return;
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Вы ввели не число, повторите ввод");
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            String[] numbers = new String[2];
+            String one = Integer.toString(numRandom.nextInt(n));
+            numbers[0] = one;
+            String two = Integer.toString(numRandom.nextInt(n));
+            numbers[1] = two;
             theRows.add(numbers);
-
         }
 
         write.writeAll(theRows);
@@ -58,6 +79,7 @@ public class Lesson3 {
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
 
         String[] nextLine;
+
         while ((nextLine = reader.readNext()) != null) {
             System.out.println(Arrays.toString(nextLine));
         }
