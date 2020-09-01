@@ -15,6 +15,7 @@ public class Lesson3 {
     String NAMEFOLDER = "test_csv";
     String DIRECTORY = "test_csv/";
     String NAMEFILECSV = "Csv.csv";
+    int n;
 
     public void creatingFolder() {
         File folder = new File(NAMEFOLDER);
@@ -35,14 +36,14 @@ public class Lesson3 {
         CSVWriter write;
         write = new CSVWriter(new FileWriter(NAMEFOLDER + "/" + NAMEFILECSV)
                 , ';');
+
         List<String[]> theRows = new ArrayList<>();
+
         Random numRandom = new Random();
 
-        String[] header = new String[]{"numberOne", "numberTwo"};
+        //String[] header = new String[]{"id", "numberTwo"};
 
-        theRows.add(header);
-
-        int n;
+        //theRows.add(header);
 
         System.out.println("Введите число строк");
 
@@ -62,10 +63,16 @@ public class Lesson3 {
 
         for (int i = 0; i < n; i++) {
             String[] numbers = new String[2];
-            String one = Integer.toString(numRandom.nextInt(n));
-            numbers[0] = one;
+            numbers[0] = Integer.toString(i);
+
             String two = Integer.toString(numRandom.nextInt(n));
-            numbers[1] = two;
+
+            if (two.equals("0")) {
+                numbers[1] = null;
+            } else {
+                numbers[1] = two;
+            }
+
             theRows.add(numbers);
         }
 
@@ -75,14 +82,49 @@ public class Lesson3 {
 
     public void fileReadCsv() throws Exception {
         File fileCsv = new File(DIRECTORY + NAMEFILECSV);
-
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
+
+        List<String> list = new ArrayList<>();
 
         String[] nextLine;
 
         while ((nextLine = reader.readNext()) != null) {
-            System.out.println(Arrays.toString(nextLine));
+            System.out.println(Arrays.toString(new String[]{nextLine[1]}));
+            list.add(nextLine[1]); //записываю второй столбец в лист
         }
+
         reader.close();
+
+        String[] numberStr = list.toArray(new String[0]); // создаю строковый
+        // массив из листа
+
+        Integer[] numbers = new Integer[numberStr.length]; // преобразовываю
+        // в Integer массив
+
+        for (int i = 0; i < numberStr.length; i++) {
+            try {
+                numbers[i] = Integer.parseInt(numberStr[i]);
+            } catch (NumberFormatException e) {
+                numbers[i] = 0;
+            }
+        }
+
+        System.out.println(Arrays.toString(numbers));
+
+        Integer[] counter = new Integer[n];
+
+        // TODO: 01.09.2020 В этом месте выдает NullPointerException, не могу
+        //  понять почему
+
+        for (int i = 0; i < numbers.length; i++) {
+            counter[numbers[i]]++;
+
+        }
+
+        System.out.println("value\tcount");
+
+        for (int i = 0; i < counter.length; i++) {
+            System.out.println(i + "\t" + counter[i]);
+        }
     }
 }
