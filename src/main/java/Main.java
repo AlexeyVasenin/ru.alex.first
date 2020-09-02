@@ -11,27 +11,27 @@ import java.util.Scanner;
 public class Main {
 
     private static final Scanner input = new Scanner(System.in);
-    private static final File folderLessons = new File("Lesson");
-    private static final String LESSON1 = "lesson1";
-    private static final String LESSON2 = "lesson2";
-    private static final String CSV = "lesson3";
+    private static final File FOLDER = new File("Lesson");
+    private static final String LESSON1 = "les1";
+    private static final String LESSON2 = "les2";
+    private static final String LESSON3 = "les3";
 
     public static void main(String[] args) throws Exception {
-        String[] fileLessons = folderLessons.list();
+        String[] fileLessons = FOLDER.list();
 
         System.out.println(Arrays.toString(fileLessons));
         System.out.println();
 
         String in = "";
 
-        while (!in.equals(LESSON2) && !in.equals(CSV) && !in.equals(LESSON1)) {
-            System.out.println("Введите lesson1 or lesson2 or lesson3");
+        while (!in.equals(LESSON2) && !in.equals(LESSON3) && !in.equals(LESSON1)) {
+            System.out.println("Введите les1 or les2 or les3");
 
             in = input.nextLine().toLowerCase();
         }
 
         switch (in) {
-            case "lesson1": {
+            case "les1": {
                 System.out.println(outTextLesson("Lesson 1.txt"));
 
                 Lesson1 text = new Lesson1();
@@ -39,9 +39,7 @@ public class Main {
                 text.lesson1();
                 break;
             }
-            //TODO: идёт повторение кода, подумай как можно уьрать
-            // повторяющийся код и сократить количество case
-            case "lesson2": {
+            case "les2": {
                 System.out.println(outTextLesson("Lesson 2.txt"));
                 System.out.println(outTextLesson("Lesson 2.2.txt"));
                 System.out.println(outTextLesson("Lesson 2.3.txt"));
@@ -59,14 +57,14 @@ public class Main {
                     inputLesson2 = input.nextLine();
                 }
                 if (inputLesson2.equals("dog")) {
-                    dog.dogInputToWrite();
+                    dog.writeDogInList();
                 }
                 if (inputLesson2.equals("cat")) {
-                    cat.catInputToWrite();
+                    cat.writeCatInMap();
                 }
                 break;
             }
-            case "lesson3": {
+            case "les3": {
                 System.out.println(outTextLesson("Lesson 3.1.txt"));
 
                 Lesson3 fileCsvTest = new Lesson3();
@@ -83,7 +81,7 @@ public class Main {
 
     public static String outTextLesson(String name) throws Exception {
         BufferedReader reader;
-        reader = new BufferedReader(new FileReader(folderLessons + "/" + name));
+        reader = new BufferedReader(new FileReader(FOLDER + "/" + name));
         StringBuilder outTextLessonAll = new StringBuilder();
         String textLesson = reader.readLine();
 

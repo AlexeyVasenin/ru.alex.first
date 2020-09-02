@@ -5,18 +5,12 @@ import java.util.*;
 public class Lesson2 {
 
     private static final Scanner in = new Scanner(System.in);
+    private static int n;
 
-    public void dogInputToWrite() {
-        ArrayList<Dog> dogList = new ArrayList<>();
-        List<Dog> list = new ArrayList<>();
-        Random random = new Random();
+    // TODO: 02.09.2020 Вынес инициализацию кол-во животных в отдельный метод. 
+    private void enteringTheNumberOfAnimals() {
+        System.out.println("Введите кол-во животных(не менее 1)");
 
-        int n;
-
-        System.out.println("Введите кол-во собак(не менее 1)");
-
-        //TODO: А если я 2 раза введу не правильно?
-        // TODO: 27.08.2020 Наконец-то до меня дошло как это сделать Оо.
         while (true) {
             try {
                 n = Integer.parseInt(in.nextLine());
@@ -27,9 +21,19 @@ public class Lesson2 {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Вы ввели не число, повторите ввод");
+                System.out.println("Вы ввели не число, введите кол-во " +
+                        "животных(не менее 1)");
             }
         }
+    }
+
+    public void writeDogInList() {
+        ArrayList<Dog> dogList = new ArrayList<>();
+        List<Dog> list = new ArrayList<>();
+
+        Random random = new Random();
+
+        enteringTheNumberOfAnimals();
 
         int sumObject = random.nextInt(n) + 1;
 
@@ -81,26 +85,10 @@ public class Lesson2 {
         }
     }
 
-    public void catInputToWrite() {
+    public void writeCatInMap() {
         HashMap<Integer, Cat> catList = new HashMap<>();
 
-        int n;
-
-        System.out.println("Введите кол-во кошек(не менее 1)");
-
-        while (true) {
-            try {
-                n = Integer.parseInt(in.nextLine());
-                if (n == 0) {
-                    return;
-                } else {
-                    break;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Вы ввели не число, повторите ввод");
-            }
-        }
+        enteringTheNumberOfAnimals();
 
         for (int i = 0; i < n; i++) {
             try {
