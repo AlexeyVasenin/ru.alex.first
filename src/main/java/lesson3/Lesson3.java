@@ -6,7 +6,10 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
 
 
 public class Lesson3 {
@@ -90,6 +93,7 @@ public class Lesson3 {
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
 
         Map<Integer, Integer> result = new HashMap<>();
+
         for (String[] row : reader.readAll()) {
             try {
                 result.put(Integer.parseInt(row[0]), Integer.parseInt(row[1]));
@@ -104,6 +108,7 @@ public class Lesson3 {
         Map<Integer, Integer> replace = new HashMap<>();
 
         for (Integer i : result.values()) {
+
             if (replace.containsKey(i)) {
                 replace.put(i, replace.get(i) + 1);
             } else {
@@ -111,11 +116,9 @@ public class Lesson3 {
             }
         }
 
-        Set<Integer> keys = replace.keySet();
-
         System.out.println("\nВывод число повторений\n");
 
-        for (Integer key : keys) {
+        for (Integer key : replace.keySet()) {
             System.out.println("Значение #" + key + " повторяется");
             System.out.println(replace.get(key));
         }
