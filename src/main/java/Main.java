@@ -16,7 +16,8 @@ public class Main {
     private static final String LESSON2 = "les2";
     private static final String LESSON3 = "les3";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception
+    {
         String[] fileLessons = FOLDER.list();
 
         System.out.println(Arrays.toString(fileLessons));
@@ -71,15 +72,22 @@ public class Main {
 
                 fileCsvTest.creatingFolder();
                 fileCsvTest.checkedAndDeleteFileCsv();
+
+                long starTime = System.currentTimeMillis();
+
                 fileCsvTest.fileWriteCsv();
                 fileCsvTest.fileReadCsv();
-                //fileCsvTest.checkedAndDeleteFileCsv();
+
+                long endTime = System.currentTimeMillis();
+                System.out.println("Время прошло " + (endTime - starTime) / 1000 +
+                        "c");
                 break;
             }
         }
     }
 
-    public static String outTextLesson(String name) throws Exception {
+    public static String outTextLesson(String name) throws Exception
+    {
         BufferedReader reader;
         reader = new BufferedReader(new FileReader(FOLDER + "/" + name));
         StringBuilder outTextLessonAll = new StringBuilder();

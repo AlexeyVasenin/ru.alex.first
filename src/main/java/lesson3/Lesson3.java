@@ -6,10 +6,9 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 
 public class Lesson3 {
@@ -20,12 +19,14 @@ public class Lesson3 {
     private static final String NAME_FILE_CSV = "Csv.csv";
     private static int n;
 
-    public void creatingFolder() {
+    public void creatingFolder()
+    {
         File folder = new File(NAME_FOLDER);
         folder.mkdir();
     }
 
-    public void checkedAndDeleteFileCsv() {
+    public void checkedAndDeleteFileCsv()
+    {
         boolean fileCsv = new File(DIRECTORY + NAME_FILE_CSV).isFile();
 
         if (fileCsv) {
@@ -35,12 +36,13 @@ public class Lesson3 {
         }
     }
 
-    public void enteringTheNumberLine() {
+    private void enteringTheNumberLine()
+    {
         System.out.println("Введите число строк");
 
         while (true) {
             try {
-                n = Integer.parseInt(input.nextLine());
+                n = parseInt(input.nextLine());
                 if (n == 0) {
                     return;
                 } else {
@@ -53,18 +55,21 @@ public class Lesson3 {
         }
     }
 
-    public void fileWriteCsv() throws Exception {
+    public void fileWriteCsv() throws Exception
+    {
         CSVWriter write;
         write = new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV)
                 , ';');
-
-        Map<String, String> theRows = new HashMap<>();
 
         Random numRandom = new Random();
 
         enteringTheNumberLine();
 
         for (int i = 0; i < n; i++) {
+
+            write.flush();
+
+            Map<String, String> theRows = new LinkedHashMap<>();
 
             String value = Integer.toString(numRandom.nextInt(n));
 
@@ -73,54 +78,44 @@ public class Lesson3 {
             } else {
                 theRows.put(Integer.toString(i), value);
             }
+
+            for (Map.Entry<String, String> row : theRows.entrySet()) {
+                write.writeNext(new String[]{row.getKey(), row.getValue()});
+            }
         }
 
-        System.out.println("Значение мапы перед записью в csv" + "\n");
-
-        for (Map.Entry<String, String> row : theRows.entrySet()) {
-            System.out.println(row.getKey() + " => " + row.getValue());
-        }
-
-        for (Map.Entry<String, String> row : theRows.entrySet()) {
-            write.writeNext(new String[]{row.getKey(), row.getValue()});
-        }
 
         write.close();
     }
 
-    public void fileReadCsv() throws Exception {
+    public void fileReadCsv() throws Exception
+    {
+        Map<Integer, Integer> repeat = new HashMap<>();
+
         File fileCsv = new File(DIRECTORY + NAME_FILE_CSV);
         CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
 
-        Map<Integer, Integer> result = new HashMap<>();
-
         for (String[] row : reader.readAll()) {
-            try {
-                result.put(Integer.parseInt(row[0]), Integer.parseInt(row[1]));
-            } catch (NumberFormatException e) {
-                //e.printStackTrace();
-                result.put(Integer.parseInt(row[0]), 0);
+
+            if (row[1].equals("")) {
+                row[1] = "0";
+            }
+
+            if (repeat.containsKey(Integer.parseInt(row[1]))) {
+                repeat.put(Integer.parseInt(row[1]),
+                        repeat.get(Integer.parseInt(row[1])) + 1);
+            } else {
+                repeat.put(Integer.parseInt(row[1]), 1);
             }
         }
 
         reader.close();
 
-        Map<Integer, Integer> replace = new HashMap<>();
-
-        for (Integer i : result.values()) {
-
-            if (replace.containsKey(i)) {
-                replace.put(i, replace.get(i) + 1);
-            } else {
-                replace.put(i, 1);
-            }
-        }
-
         System.out.println("\nВывод число повторений\n");
 
-        for (Integer key : replace.keySet()) {
+        for (Integer key : repeat.keySet()) {
             System.out.println("Значение #" + key + " повторяется");
-            System.out.println(replace.get(key));
+            System.out.println(repeat.get(key));
         }
     }
 }
