@@ -7,7 +7,6 @@ public class Lesson2 {
     private static final Scanner in = new Scanner(System.in);
     private static int n;
 
-    // TODO: 02.09.2020 Вынес инициализацию кол-во животных в отдельный метод. 
     private void enteringTheNumberOfAnimals() {
         System.out.println("Введите кол-во животных(не менее 1)");
 
