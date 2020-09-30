@@ -62,10 +62,23 @@ public class Main4 {
         return result;
     }
 
+    private static float func1(int n)
+    {
+        float x =value;
+        float result = 0;
+
+        for (int i = 1; i <= n; i++) {
+            result -= (float) ((Math.pow(-1, i) * Math.pow(-x, i)) / i);
+        }
+
+        return (result);
+    }
+
     public static void main(String[] args) throws IOException
     {
         inputNumberToPower();
         inputNumberToValue();
-        System.out.println("Result \n" + func(n));
+        System.out.println("Result recursive func \n" + func(n));
+        System.out.println("\n Result cycle func1 \n" + func1(n));
     }
 }
