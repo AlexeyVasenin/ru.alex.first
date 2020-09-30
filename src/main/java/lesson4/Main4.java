@@ -11,8 +11,8 @@ public class Main4 {
     private static int n;
     private static float value;
 
-    private static void inputNumberToPower()
-    {
+    //TODO: У тебя функция бесконечно убывающая от 1 до 0, как точность может быть >=1?
+    private static void inputNumberToPower() {
         System.out.println("Введите степень точности от 1 до ∞");
         while (true) {
             try {
@@ -32,7 +32,9 @@ public class Main4 {
         while (true) {
             try {
                 value = Float.parseFloat(in.readLine());
+                //TODO: какое условие сходимости ряда?
                 if (value >= 1) {
+                    //TODO: сделай выозов ошибки. (throw new Exception()) с описанием ошибки и выведи это описание
                     System.out.println("Вы введи число больше или равное 1 " +
                             "повторите " +
                             "ввод число меньше 1");
@@ -48,23 +50,25 @@ public class Main4 {
         }
     }
 
-    private static float func(int n) throws IOException
-    {
+    //TODO: n-константа и n-как параметр метода?
+    //TODO: Не понятно по имени метода за что отвечает метод
+    private static float func(int n) throws IOException {
         float x = value;
         if (n == 1) {
             return (-x);
         }
 
+        //TODO: Почему нельзя присвоить значение сразу переменной?
         float result;
-        result =
-                (float) (func(n - 1) - ((Math.pow(-1, n) * Math.pow(-x, n)) / n));
-
+        result = (float) (func(n - 1) - ((Math.pow(-1, n) * Math.pow(-x, n)) / n));
+        //TODO: Почему нельзя сразу вернуть result?
         return result;
     }
 
-    private static float func1(int n)
-    {
-        float x =value;
+    //TODO: n-константа и n-как параметр метода?
+    //TODO: Не понятно по имени метода за что отвечает метод
+    private static float func1(int n) {
+        float x = value;
         float result = 0;
 
         for (int i = 1; i <= n; i++) {
@@ -74,10 +78,11 @@ public class Main4 {
         return (result);
     }
 
-    public static void main(String[] args) throws IOException
-    {
+    //TODO: Не верное решение
+    public static void main(String[] args) throws IOException {
         inputNumberToPower();
         inputNumberToValue();
+        //TODO: Зачем n используешь как константу?
         System.out.println("Result recursive func \n" + func(n));
         System.out.println("\n Result cycle func1 \n" + func1(n));
     }
