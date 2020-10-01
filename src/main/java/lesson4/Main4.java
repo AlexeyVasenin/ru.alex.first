@@ -37,10 +37,10 @@ public class Main4 {
             try {
                 x = Double.parseDouble(in.readLine());
                 //TODO: какое условие сходимости ряда?
+                // TODO: 01.10.2020 Сделл условия
                 if (x > 1 || x <= -1) {
                     throw new Exception("Вы введи число больше 1 или меньше " +
-                            "и равное -1 повторите ввод"); // TODO: 30.0.2020
-                    // Сделал вызов ошибки
+                            "и равное -1 повторите ввод"); // TODO: 30.0.2020 Сделал вызов ошибки
                     //TODO: сделай выозов ошибки. (throw new Exception()) с
                     // описанием ошибки и выведи это описание
                 } else {
@@ -58,19 +58,22 @@ public class Main4 {
     //TODO: Не понятно по имени метода за что отвечает метод
 
     // TODO: 30.09.2020 Изменил имя метода
-    private static double ResultOfCalcTheFuncLn(int n) throws IOException
+    // TODO: 01.10.2020 Изменил имя переменной с "n" -> "k"
+    private static double RecursiveOfCalcTheFuncLn(int k) throws IOException
     {
-        if (n == 1) {
+        if (k == 1) {
             return (x);
         }
         //TODO: Почему нельзя присвоить значение сразу переменной?
         //TODO: Почему нельзя сразу вернуть result?
-        return (double) (ResultOfCalcTheFuncLn(n - 1) - ((Math.pow(-1, n) * Math.pow(x, n)) / n)); // TODO: 30.09.2020 Сократил код
+        return RecursiveOfCalcTheFuncLn(k - 1) - ((Math.pow(-1, k) * Math.pow(x, k)) / k); // TODO: 30.09.2020 Сократил код
     }
 
     //TODO: n-константа и n-как параметр метода?
     //TODO: Не понятно по имени метода за что отвечает метод
-    private static double func1()
+
+    // TODO: 01.10.2020 Изменил имя метода
+    private static double CycleOfCalcTheFuncLn()
     {
         double result = 0;
 
@@ -88,7 +91,7 @@ public class Main4 {
         inputNumberToPower();
         inputNumberToValue();
         //TODO: Зачем n используешь как константу?
-        System.out.println("Result recursive func Ln(1+x) \n" + ResultOfCalcTheFuncLn(n));
-        System.out.println("\nResult cycle func Ln(1+x) \n" + func1());
+        System.out.println("Result recursive func Ln(1+x) \n" + RecursiveOfCalcTheFuncLn(n));
+        System.out.println("\nResult cycle func Ln(1+x) \n" + CycleOfCalcTheFuncLn());
     }
 }
