@@ -6,6 +6,9 @@ import au.com.bytecode.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -55,61 +58,60 @@ public class Lesson3 {
         }
     }
 
-    public void fileWriteCsv() throws Exception
+    public void fileWriteCsv() throws IOException
     {
-        CSVWriter write;
-        write = new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV)
-                , ';');
+        try (CSVWriter write =
+                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV)
+                             , ';')) {
 
-        Random numRandom = new Random();
+            Random numRandom = SecureRandom.getInstanceStrong();
 
-        enteringTheNumberLine();
+            enteringTheNumberLine();
 
-        for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
 
-            write.flush();
+                write.flush();
 
-            Map<String, String> theRows = new LinkedHashMap<>();
+                Map<String, String> theRows = new LinkedHashMap<>();
 
-            String value = Integer.toString(numRandom.nextInt(n));
+                String value = Integer.toString(numRandom.nextInt(n));
 
-            if (value.equals("0")) {
-                theRows.put(Integer.toString(i), null);
-            } else {
-                theRows.put(Integer.toString(i), value);
+                if (value.equals("0")) {
+                    theRows.put(Integer.toString(i), null);
+                } else {
+                    theRows.put(Integer.toString(i), value);
+                }
+
+                for (Map.Entry<String, String> row : theRows.entrySet()) {
+                    write.writeNext(new String[]{row.getKey(), row.getValue()});
+                }
             }
-
-            for (Map.Entry<String, String> row : theRows.entrySet()) {
-                write.writeNext(new String[]{row.getKey(), row.getValue()});
-            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
-
-
-        write.close();
     }
 
-    public void fileReadCsv() throws Exception
+    public void fileReadCsv() throws IOException
     {
         Map<Integer, Integer> repeat = new HashMap<>();
 
         File fileCsv = new File(DIRECTORY + NAME_FILE_CSV);
-        CSVReader reader = new CSVReader(new FileReader(fileCsv), ';');
 
-        for (String[] row : reader.readAll()) {
+        try (CSVReader reader = new CSVReader(new FileReader(fileCsv), ';')) {
+            for (String[] row : reader.readAll()) {
 
-            if (row[1].equals("")) {
-                row[1] = "0";
-            }
+                if (row[1].equals("")) {
+                    row[1] = "0";
+                }
 
-            if (repeat.containsKey(Integer.parseInt(row[1]))) {
-                repeat.put(Integer.parseInt(row[1]),
-                        repeat.get(Integer.parseInt(row[1])) + 1);
-            } else {
-                repeat.put(Integer.parseInt(row[1]), 1);
+                if (repeat.containsKey(parseInt(row[1]))) {
+                    repeat.put(parseInt(row[1]),
+                            repeat.get(parseInt(row[1])) + 1);
+                } else {
+                    repeat.put(parseInt(row[1]), 1);
+                }
             }
         }
-
-        reader.close();
 
         System.out.println("\nВывод число повторений\n");
 
