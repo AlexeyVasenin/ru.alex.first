@@ -10,12 +10,12 @@ public class Lesson4 {
 
     private static final BufferedReader in =
             new BufferedReader(new InputStreamReader(System.in));
+    //TODO: С первого раза не поймёшь что такое k
     private static double k;
     private static double x;
 
 
-    //TODO: У тебя функция бесконечно убывающая от 1 до 0, как точность может
-    // быть >=1?
+    //TODO: степень точности может быть равна 0.1
     private static void inputNumberToPower()
     {
         System.out.println("Введите степень точности \"k\" не более 0.1");
@@ -78,7 +78,6 @@ public class Lesson4 {
         return result;
     }
 
-    //TODO: Не верное решение
     public void calcRun()
     {
         System.out.println("Программа для вычисления функции Ln(1+x)=... \n");
