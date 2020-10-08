@@ -1,4 +1,4 @@
-package lesson3;
+package ru.alex.lesson3;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.*;
@@ -20,23 +22,16 @@ public class Lesson3 {
     private static final String NAME_FOLDER = "test_csv";
     private static final String DIRECTORY = "test_csv/";
     private static final String NAME_FILE_CSV = "Csv.csv";
-    private static int n;
+    private int n;
 
-    public void creatingFolder()
+    public void creatingFolder() throws IOException
     {
-        File folder = new File(NAME_FOLDER);
-        folder.mkdir();
+        Files.createDirectories(Paths.get(NAME_FOLDER));
     }
 
-    public void checkedAndDeleteFileCsv()
+    public void checkedAndDeleteFileCsv() throws IOException
     {
-        boolean fileCsv = new File(DIRECTORY + NAME_FILE_CSV).isFile();
-
-        if (fileCsv) {
-            new File(DIRECTORY + NAME_FILE_CSV).delete();
-        } else {
-            System.out.println("Файл не существует");
-        }
+        Files.deleteIfExists(Paths.get(DIRECTORY + NAME_FILE_CSV));
     }
 
     private void enteringTheNumberLine()
@@ -120,4 +115,6 @@ public class Lesson3 {
             System.out.println(repeat.get(key));
         }
     }
+
+
 }

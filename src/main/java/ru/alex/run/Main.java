@@ -1,7 +1,9 @@
-import Lesson1.Lesson1;
-import Lesson2.Lesson2;
-import Lesson4.Lesson4;
-import lesson3.Lesson3;
+package ru.alex.run;
+
+import ru.alex.lesson1.Lesson1;
+import ru.alex.lesson2.Lesson2;
+import ru.alex.lesson3.Lesson3;
+import ru.alex.lesson4.Lesson4;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package Lesson2;
+package ru.alex.lesson2;
 
 
 public abstract class Animal implements IPrint {

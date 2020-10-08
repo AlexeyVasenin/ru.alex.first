@@ -1,11 +1,13 @@
-package Lesson2;
+package ru.alex.lesson2;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.*;
 
 public class Lesson2 {
 
     private static final Scanner in = new Scanner(System.in);
-    private static int n;
+    private int n;
 
     private void enteringTheNumberOfAnimals() {
         System.out.println("Введите кол-во животных(не менее 1)");
@@ -26,11 +28,12 @@ public class Lesson2 {
         }
     }
 
-    public void writeDogInList() {
+    public void writeDogInList() throws NoSuchAlgorithmException
+    {
         ArrayList<Dog> dogList = new ArrayList<>();
         List<Dog> list = new ArrayList<>();
 
-        Random random = new Random();
+        Random random = SecureRandom.getInstanceStrong();
 
         enteringTheNumberOfAnimals();
 
@@ -108,7 +111,7 @@ public class Lesson2 {
                 System.out.println("Введите Отца");
                 cat.setDad(in.nextLine());
 
-                System.out.println("Введите место проживания");
+                System.out.println("Введите породу");
                 cat.setBreed(in.nextLine());
 
                 System.out.println("Введите привит(1)/ не привит(0)");

@@ -1,4 +1,4 @@
-package Lesson2;
+package ru.alex.lesson2;
 
 
 public class Cat extends Animal implements IPrint {

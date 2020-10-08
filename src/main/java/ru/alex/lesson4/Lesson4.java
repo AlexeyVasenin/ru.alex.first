@@ -1,4 +1,4 @@
-package Lesson4;
+package ru.alex.lesson4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,27 +10,29 @@ public class Lesson4 {
 
     private static final BufferedReader in =
             new BufferedReader(new InputStreamReader(System.in));
-    //TODO: С первого раза не поймёшь что такое k
-    private static double k;
-    private static double x;
+    //TODO: С первого раза не поймёшь что такое accuracy
+    private static double accuracy; // сalculation accuracy specified by the
+    // user
+    private static double x; // "x" value in function Ln(1+x)=...
 
 
     //TODO: степень точности может быть равна 0.1
     private static void inputNumberToPower()
     {
-        System.out.println("Введите степень точности \"k\" не более 0.1");
+        System.out.println("Введите степень точности \"accuracy\" не более 0" +
+                ".1");
 
         while (true) {
             try {
-                k = Double.parseDouble(in.readLine());
-                if (k > 0.1 || k == 0) {
+                accuracy = Double.parseDouble(in.readLine());
+                if (accuracy >= 0.1 || accuracy == 0) {
                     throw new IOException("Введеное число не удовлетворяет " +
                             "требованию, повторите ввод");
                 } else break;
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Повторите ввод, число должно быть в " +
-                        "пределах 0 < k <= 0.1");
+                        "пределах 0 < accuracy <= 0.1");
             }
         }
     }
@@ -58,7 +60,7 @@ public class Lesson4 {
     {
         double result = ((Math.pow(-1, n) * Math.pow(x, n)) / n);
 
-        if (abs(result) > k) {
+        if (abs(result) > accuracy) {
 
             result = recursiveCalcFuncLn(n + 1) - result;
 
@@ -74,7 +76,7 @@ public class Lesson4 {
             i = ((Math.pow(-1, n) * Math.pow(x, n)) / n);
             result -= i;
             n++;
-        } while (abs(i) > k);
+        } while (abs(i) > accuracy);
         return result;
     }
 
