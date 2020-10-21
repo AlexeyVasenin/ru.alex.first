@@ -10,13 +10,11 @@ public class Lesson4 {
 
     private static final BufferedReader in =
             new BufferedReader(new InputStreamReader(System.in));
-    //TODO: С первого раза не поймёшь что такое accuracy
     private static double accuracy; // сalculation accuracy specified by the
     // user
     private static double x; // "x" value in function Ln(1+x)=...
 
 
-    //TODO: степень точности может быть равна 0.1
     private static void inputNumberToPower()
     {
         System.out.println("Введите степень точности \"accuracy\" не более 0" +
