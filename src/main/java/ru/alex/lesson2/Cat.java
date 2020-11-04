@@ -17,7 +17,7 @@ public class Cat extends Animal implements IPrint {
     }
 
     public String getVaccinated() {
-        if (vaccinated) {
+        if (Boolean.TRUE.equals(vaccinated)) {
             return "Привит";
         } else {
             return "Не привит";

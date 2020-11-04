@@ -1,7 +1,9 @@
 package ru.alex.lesson3;
 
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -56,8 +58,7 @@ public class Lesson3 {
     public void fileWriteCsv() throws IOException
     {
         try (CSVWriter write =
-                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV)
-                             , ';')) {
+                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV))) {
 
             Random numRandom = SecureRandom.getInstanceStrong();
 
@@ -92,7 +93,7 @@ public class Lesson3 {
 
         File fileCsv = new File(DIRECTORY + NAME_FILE_CSV);
 
-        try (CSVReader reader = new CSVReader(new FileReader(fileCsv), ';')) {
+        try (CSVReader reader = new CSVReader(new FileReader(fileCsv))) {
             for (String[] row : reader.readAll()) {
 
                 if (row[1].equals("")) {
@@ -106,6 +107,8 @@ public class Lesson3 {
                     repeat.put(parseInt(row[1]), 1);
                 }
             }
+        } catch (CsvException e) {
+            e.printStackTrace();
         }
 
         System.out.println("\nВывод число повторений\n");

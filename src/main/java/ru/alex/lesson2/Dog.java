@@ -16,7 +16,7 @@ public class Dog extends Animal implements IPrint {
     }
 
     public String getCastrate() {
-        if (castrate) {
+        if (Boolean.TRUE.equals(castrate)) {
             return "Кастрирован";
         } else {
             return "Не кастрирован";
