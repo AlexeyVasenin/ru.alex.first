@@ -22,13 +22,13 @@ public class Lesson3 {
 
     private static final Scanner input = new Scanner(System.in);
     private static final String NAME_FOLDER = "test_csv";
-    private static final String DIRECTORY = "test_csv/";
+    private static final String DIRECTORY = "src/main/resources/";
     private static final String NAME_FILE_CSV = "Csv.csv";
     private int n;
 
     public void creatingFolder() throws IOException
     {
-        Files.createDirectories(Paths.get(NAME_FOLDER));
+        Files.createDirectories(Paths.get(DIRECTORY + NAME_FOLDER));
     }
 
     public void checkedAndDeleteFileCsv() throws IOException
@@ -58,7 +58,8 @@ public class Lesson3 {
     public void fileWriteCsv() throws IOException
     {
         try (CSVWriter write =
-                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV))) {
+                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FOLDER +
+                             "/" + NAME_FILE_CSV))) {
 
             Random numRandom = SecureRandom.getInstanceStrong();
 
