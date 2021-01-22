@@ -7,20 +7,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Depositor implements Serializable {
+public class Depositor {
 
 
-//    @CsvBindByPosition(position = 1)
+   @CsvBindByPosition(position = 0)
     String name;
 
-//    @CsvBindByPosition(position = 2)
+   @CsvBindByPosition(position = 1)
     Integer accountNumber;
 
-//    @CsvBindByPosition(position = 3)
+    @CsvBindByPosition(position = 2)
     Integer amount;
 
-//    @CsvBindByPosition(position = 4)
-    String age;
+   @CsvBindByPosition(position = 3)
+    Integer age;
 
     public Depositor()
     {
@@ -28,9 +28,9 @@ public class Depositor implements Serializable {
 
     public Depositor(String name, Integer accountNumber,
                      Integer amount,
-                     String age)
+                     Integer age)
     {
-
+        super();
         this.name = name;
         this.accountNumber = accountNumber;
         this.amount = amount;
@@ -68,17 +68,20 @@ public class Depositor implements Serializable {
         this.amount = amount;
     }
 
-    public String getAge()
+    public Integer getAge()
     {
         return age;
     }
 
-    public void setAge(int age) throws ParseException
+    public void setAge(int age)
     {
-        String date = Integer.toString(age);
-        SimpleDateFormat s = new SimpleDateFormat("yyyy");
-        Date y = s.parse(date);
-        SimpleDateFormat a = new SimpleDateFormat("yyyy");
-        this.age = a.format(y);
+        this.age=age;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Depositor [" + name + " " + accountNumber + " " + amount + " " + age + "]";
+    }
+
 }

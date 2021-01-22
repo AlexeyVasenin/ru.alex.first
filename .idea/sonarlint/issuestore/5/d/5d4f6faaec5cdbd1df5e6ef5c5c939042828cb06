@@ -1,11 +1,12 @@
 
-S
-java:S1068"1Remove this unused "FILE_NAME_CSV" private field.(Ÿè½Ûûÿÿÿÿ8¶ŞÊò.
-{
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(í¢şüÿÿÿÿ8¶ŞÊò.
-O
-java:S1128"2Remove this unused import 'com.opencsv.CSVWriter'.(¦²Ö8¶ŞÊò.
-Z	java:S106("9Replace this use of System.out or System.err by a logger.(´‹¹öşÿÿÿÿ8±øÊò.
-J
-java:S1481"(Remove this unused "man" local variable.(àõÜùÿÿÿÿ8¶ŞÊò.
-]	java:S1254"<This block of commented-out lines of code should be removed.(Â™†úÿÿÿÿ8®ÔúÇò.
+i
+java:S2095"GUse try-with-resources or close this "CSVWriter" in a "finally" clause.(ªÁÆ“ùÿÿÿÿ8ÈòşÓò.
+f
+java:S21479"DCombine this catch with the one at line 55, which has the same body.(…Üùùÿÿÿÿ8Àğ·Òò.
+Z	java:S1060"9Replace this use of System.out or System.err by a logger.(ÒµÄ˜şÿÿÿÿ8æø¹Òò.
+g
+java:S32523"JUse static access with "com.opencsv.ICSVWriter" for "NO_ESCAPE_CHARACTER".(¼ìŒİ8§å§Óò.
+L
+java:S37402"/Provide the parametrized type for this generic.(¯ŞäÊ8Àğ·Òò.
+L
+java:S37402"/Provide the parametrized type for this generic.(¯ŞäÊ8Àğ·Òò.
