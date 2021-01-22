@@ -9,45 +9,34 @@ import java.util.Date;
 
 public class Depositor implements Serializable {
 
-    @CsvBindByPosition(position = 0)
-    Integer id;
 
-    @CsvBindByPosition(position = 1)
+//    @CsvBindByPosition(position = 1)
     String name;
 
-    @CsvBindByPosition(position = 2)
+//    @CsvBindByPosition(position = 2)
     Integer accountNumber;
 
-    @CsvBindByPosition(position = 3)
+//    @CsvBindByPosition(position = 3)
     Integer amount;
 
-    @CsvBindByPosition(position = 4)
+//    @CsvBindByPosition(position = 4)
     String age;
 
     public Depositor()
     {
     }
 
-    public Depositor(Integer id, String name, Integer accountNumber,
+    public Depositor(String name, Integer accountNumber,
                      Integer amount,
                      String age)
     {
-        this.id = id;
+
         this.name = name;
         this.accountNumber = accountNumber;
         this.amount = amount;
         this.age = age;
     }
 
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
 
     public String getName()
     {
