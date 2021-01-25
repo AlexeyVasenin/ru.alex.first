@@ -7,30 +7,28 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Depositor {
+public class Depositor implements Serializable {
 
 
-   @CsvBindByPosition(position = 0)
+    @CsvBindByPosition(position = 0)
     String name;
 
-   @CsvBindByPosition(position = 1)
+    @CsvBindByPosition(position = 1)
     Integer accountNumber;
 
     @CsvBindByPosition(position = 2)
     Integer amount;
 
-   @CsvBindByPosition(position = 3)
-    Integer age;
+    @CsvBindByPosition(position = 3)
+    String age;
 
-    public Depositor()
-    {
+    public Depositor() {
     }
 
     public Depositor(String name, Integer accountNumber,
                      Integer amount,
-                     Integer age)
-    {
-        super();
+                     String age) {
+
         this.name = name;
         this.accountNumber = accountNumber;
         this.amount = amount;
@@ -38,50 +36,46 @@ public class Depositor {
     }
 
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Integer getAccountNumber()
-    {
+    public Integer getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(Integer accountNumber)
-    {
+    public void setAccountNumber(Integer accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public Integer getAmount()
-    {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount)
-    {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public Integer getAge()
-    {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age)
-    {
-        this.age=age;
+    public void setAge(int age) throws ParseException {
+        String date = Integer.toString(age);
+        SimpleDateFormat s = new SimpleDateFormat("yyyy");
+        Date y = s.parse(date);
+        SimpleDateFormat a = new SimpleDateFormat("yyyy");
+        this.age = a.format(y);
     }
 
     @Override
-    public String toString()
-    {
-        return "Depositor [" + name + " " + accountNumber + " " + amount + " " + age + "]";
+    public String toString() {
+        return "Depositor [" + name + "," + accountNumber + "," + amount + ","
+                + age + "]";
     }
 
 }

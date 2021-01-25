@@ -1,12 +1,12 @@
 
-i
-java:S2095"GUse try-with-resources or close this "CSVWriter" in a "finally" clause.(ªÁÆ“ùÿÿÿÿ8ÈòşÓò.
+{
+java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÕáÜüÿÿÿÿ8ÍĞ‘Íò.
 f
-java:S21479"DCombine this catch with the one at line 55, which has the same body.(…Üùùÿÿÿÿ8Àğ·Òò.
-Z	java:S1060"9Replace this use of System.out or System.err by a logger.(ÒµÄ˜şÿÿÿÿ8æø¹Òò.
-g
-java:S32523"JUse static access with "com.opencsv.ICSVWriter" for "NO_ESCAPE_CHARACTER".(¼ìŒİ8§å§Óò.
+java:S2147J"DCombine this catch with the one at line 72, which has the same body.(…Üùùÿÿÿÿ8­İêÍò.
+Q
+java:S37401"/Provide the parametrized type for this generic.(Å¢Èöûÿÿÿÿ8Ù®Ìò.
 L
-java:S37402"/Provide the parametrized type for this generic.(¯ŞäÊ8Àğ·Òò.
-L
-java:S37402"/Provide the parametrized type for this generic.(¯ŞäÊ8Àğ·Òò.
+java:S37402"/Provide the parametrized type for this generic.(éó¢¤8Ù®Ìò.
+Q
+java:S37407"/Provide the parametrized type for this generic.(É­˜¦úÿÿÿÿ8ºŒÍò.
+]	java:S125B"<This block of commented-out lines of code should be removed.(Â™†úÿÿÿÿ8­İêÍò.
