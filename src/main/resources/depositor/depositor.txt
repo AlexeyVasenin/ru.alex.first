@@ -1,0 +1,10 @@
+Shmidt Alexand,111111,2000,1990
+Perfilev Mihail,222222,50000,1999
+Pechnih Alexand,333333,5500,2000
+Kiselev Leonid,444444,10000,2010
+Shakolobov Lev,55555,12000,2015
+Dolgikh Sergey,666666,13000,2020
+Makarov Ilya,777777,25000,2001
+Nizovtsev Anton,888888,35000,1995
+Baldin Nikita,999999,99000,1989
+Bryukhov Sergey,111112,100000,2007

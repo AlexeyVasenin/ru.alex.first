@@ -11,5 +11,7 @@ W
 'src/main/java/ru/alex/lesson5/Main.java,4\7\47a40c2d6808f066ce266f6fd0cdce6ff2c13e5b
 V
 &src/main/java/ru/alex/lesson2/Cat.java,6\3\6396d7ea438bece16b6736e2c03edf5ac85d7f85
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+Z
+*src/main/java/ru/alex/lesson3/Lesson3.java,a\a\aad6df03221ab1835185dc074ac172fc579e3dd6

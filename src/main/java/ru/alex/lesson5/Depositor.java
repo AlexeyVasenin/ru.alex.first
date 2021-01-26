@@ -1,40 +1,48 @@
 package ru.alex.lesson5;
 
-import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvBindByName;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Depositor implements Serializable {
 
 
-    @CsvBindByPosition(position = 0)
-    String name;
+    @CsvBindByName
+    String name; // полное имя вкладчика
 
-    @CsvBindByPosition(position = 1)
-    Integer accountNumber;
+    @CsvBindByName
+    Integer accountNumber; //номер счета
 
-    @CsvBindByPosition(position = 2)
-    Integer amount;
+    @CsvBindByName
+    Integer amount; // величина вклада
 
-    @CsvBindByPosition(position = 3)
-    String age;
+    @CsvBindByName
+    Integer age; //год открытия вклада
+
+    @CsvBindByName
+    Integer id; //порядковый номер вкладчика
 
     public Depositor() {
     }
 
     public Depositor(String name, Integer accountNumber,
                      Integer amount,
-                     String age) {
-
+                     Integer age, Integer id) {
+        super();
         this.name = name;
         this.accountNumber = accountNumber;
         this.amount = amount;
         this.age = age;
+        this.id = id;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -60,22 +68,17 @@ public class Depositor implements Serializable {
         this.amount = amount;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) throws ParseException {
-        String date = Integer.toString(age);
-        SimpleDateFormat s = new SimpleDateFormat("yyyy");
-        Date y = s.parse(date);
-        SimpleDateFormat a = new SimpleDateFormat("yyyy");
-        this.age = a.format(y);
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     @Override
     public String toString() {
-        return "Depositor [" + name + "," + accountNumber + "," + amount + ","
+        return "Depositor [" + name + " | " + amount + " | "
                 + age + "]";
     }
-
 }

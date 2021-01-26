@@ -11,8 +11,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Comparator.comparing;
+
 public class Lesson5 {
-    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
     private static final String DIRECTORY = "src/main/resources/depositor/";
     private static final String FILE_NAME_CSV = "depositor.csv";
@@ -26,8 +27,7 @@ public class Lesson5 {
 
         creatingFolder();
 
-        List<Depositor> listman = new ArrayList<>();
-
+        List<Depositor> listMan = new ArrayList<>();
 
         try (BufferedReader reader =
                      new BufferedReader(new FileReader(DIRECTORY + FILE_NAME_TXT));
@@ -35,47 +35,64 @@ public class Lesson5 {
                      new CSVWriter(new FileWriter(DIRECTORY + FILE_NAME_CSV))) {
 
             String depositorData = reader.readLine();
+            Integer id = 1;
 
             while (depositorData != null) {
                 String[] strings = depositorData.split(",");
-                listman.add(new Depositor(strings[0],
+                listMan.add(new Depositor(strings[0],
                         Integer.parseInt(strings[1]),
-                        Integer.parseInt(strings[2]), strings[3]));
+                        Integer.parseInt(strings[2]),
+                        Integer.parseInt(strings[3]),
+                        id));
                 depositorData = reader.readLine();
-
+                id++;
             }
 
-            System.out.println(listman);
+            String[] column = new String[]{"id", "name", "accountNumber",
+                    "amount", "age"};
 
-            ColumnPositionMappingStrategy mappingStrategy =
-                    new ColumnPositionMappingStrategy();
+            ColumnPositionMappingStrategy<Depositor> mappingStrategy =
+                    new ColumnPositionMappingStrategy<>();
             mappingStrategy.setType(Depositor.class);
 
+            mappingStrategy.setColumnMapping(column);
+
             StatefulBeanToCsvBuilder<Depositor> builder =
-                    new StatefulBeanToCsvBuilder(writer);
-            StatefulBeanToCsv beanToCsv =
-                    builder.withMappingStrategy(mappingStrategy).build();
-            beanToCsv.write(listman);
+                    new StatefulBeanToCsvBuilder<>(writer);
+            StatefulBeanToCsv<Depositor> beanToCsv =
+                    builder
+                            .withMappingStrategy(mappingStrategy)
+                            .build();
 
-            //            CsvToBean<Depositor> csvReader =
-//                    new CsvToBeanBuilder<Depositor>(reader)
-//                            .withType(Depositor.class)
-//                            .withSeparator(',')
-//                            .withIgnoreLeadingWhiteSpace(true)
-//                            .withIgnoreEmptyLine(true)
-//                            .build();
-//
+            beanToCsv.write(listMan);
 
-        } catch (CsvRequiredFieldEmptyException e) {
-            e.printStackTrace();
-        } catch (CsvDataTypeMismatchException e) {
+        } catch (CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
             e.printStackTrace();
         }
+    }
 
+    public void readCsvToShow() throws FileNotFoundException {
+
+        String[] column = new String[]{"id", "name", "accountNumber",
+                "amount", "age"};
+
+        ColumnPositionMappingStrategy<Depositor> mappingStrategy =
+                new ColumnPositionMappingStrategy<>();
+        mappingStrategy.setType(Depositor.class);
+
+        mappingStrategy.setColumnMapping(column);
+
+        List<Depositor> beans;
+
+        beans = new CsvToBeanBuilder(new FileReader(DIRECTORY + FILE_NAME_CSV))
+                .withMappingStrategy(mappingStrategy)
+                .build()
+                .parse();
+
+        beans.sort(comparing(Depositor::getAge));
+
+        for (Depositor i : beans) {
+            System.out.println(i);
+        }
     }
 }
-
-
-//
-
-

@@ -1,12 +1,4 @@
 
-{
-java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÕáÜüÿÿÿÿ8ÍĞ‘Íò.
-f
-java:S2147J"DCombine this catch with the one at line 72, which has the same body.(…Üùùÿÿÿÿ8­İêÍò.
-Q
-java:S37401"/Provide the parametrized type for this generic.(Å¢Èöûÿÿÿÿ8Ù®Ìò.
-L
-java:S37402"/Provide the parametrized type for this generic.(éó¢¤8Ù®Ìò.
-Q
-java:S37407"/Provide the parametrized type for this generic.(É­˜¦úÿÿÿÿ8ºŒÍò.
-]	java:S125B"<This block of commented-out lines of code should be removed.(Â™†úÿÿÿÿ8­İêÍò.
+J
+java:S3740"/Provide the parametrized type for this generic.(ñÈñ©8ŸÕ¹íó.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(´‹¹öşÿÿÿÿ8°Ô«ñó.
