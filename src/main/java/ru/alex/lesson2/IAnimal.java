@@ -1,6 +1,6 @@
 package ru.alex.lesson2;
 
-public interface IPrint {
+public interface IAnimal {
 
     String getName();
 
@@ -27,6 +27,4 @@ public interface IPrint {
     void setBreed(String breed);
 
     Boolean intToBool(Integer i);
-
-    String printOut();
 }

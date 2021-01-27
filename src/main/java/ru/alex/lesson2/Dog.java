@@ -1,6 +1,6 @@
 package ru.alex.lesson2;
 
-public class Dog extends Animal implements IPrint {
+public class Dog extends Animal implements IAnimal {
 
     private Boolean castrate;
 
@@ -27,23 +27,36 @@ public class Dog extends Animal implements IPrint {
         this.castrate = intToBool(i);
     }
 
-    public String printOut() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Кличка собаки ").append(getName());
-        sb.append("\n");
-        sb.append("Цвет ").append(getColor());
-        sb.append("\n");
-        sb.append("Местро проживания ").append(getAddress());
-        sb.append("\n");
-        sb.append("Мать ").append(getMom());
-        sb.append("\n");
-        sb.append("Отец ").append(getDad());
-        sb.append("\n");
-        sb.append("Порода ").append(getBreed());
-        sb.append("\n");
-        sb.append("Кастрирован/ не кастрирован ").append(getCastrate());
+    /*
+         public String printOut() {
+             StringBuilder sb = new StringBuilder();
+             sb.append("Кличка собаки ").append(getName())
+             .append("\n")
+             .append("Цвет ").append(getColor())
+             .append("\n")
+             .append("Местро проживания ").append(getAddress())
+             .append("\n")
+             .append("Мать ").append(getMom())
+             .append("\n")
+             .append("Отец ").append(getDad())
+             .append("\n")
+             .append("Порода ").append(getBreed())
+             .append("\n")
+             .append("Кастрирован/ не кастрирован ").append(getCastrate());
 
-        return sb.toString();
+             return sb.toString();
+         }
+        */
+
+    @Override
+    public String toString() {
+        return "Кличка собаки " + name + "\n" +
+                "Цвет " + color + "\n" +
+                "Место проживания " + address + "\n" +
+                "Мать " + mom + "\n" +
+                "Отец " + dad + "\n" +
+                "Порода " + breed + "\n" +
+                "Кастрирован/ не кастрирован " + getCastrate();
     }
 }
 

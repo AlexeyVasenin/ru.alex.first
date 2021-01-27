@@ -1,7 +1,7 @@
 package ru.alex.lesson2;
 
 
-public class Cat extends Animal implements IPrint {
+public class Cat extends Animal implements IAnimal {
 
     private Boolean vaccinated;
 
@@ -28,22 +28,34 @@ public class Cat extends Animal implements IPrint {
         this.vaccinated = intToBool(i);
     }
 
-    public String printOut() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Кличка животного ").append(getName());
-        sb.append("\n");
-        sb.append("Цвет ").append(getColor());
-        sb.append("\n");
-        sb.append("Местро проживания ").append(getAddress());
-        sb.append("\n");
-        sb.append("Мать ").append(getMom());
-        sb.append("\n");
-        sb.append("Отец ").append(getDad());
-        sb.append("\n");
-        sb.append("Порода ").append(getBreed());
-        sb.append("\n");
-        sb.append("Привит/ не привит ").append(getVaccinated());
+    /*
+         public String printOut() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Кличка животного ").append(getName())
+            .append("\n")
+            .append("Цвет ").append(getColor())
+            .append("\n")
+            .append("Местро проживания ").append(getAddress())
+            .append("\n")
+            .append("Мать ").append(getMom())
+            .append("\n")
+            .append("Отец ").append(getDad())
+            .append("\n")
+            .append("Порода ").append(getBreed())
+            .append("\n")
+            .append("Привит/ не привит ").append(getVaccinated());
 
-        return sb.toString();
+            return sb.toString();
+       }
+      */
+    @Override
+    public String toString() {
+        return "Кличка кошки " + name + "\n" +
+                "Цвет " + color + "\n" +
+                "Место проживания " + address + "\n" +
+                "Мать " + mom + "\n" +
+                "Отец " + dad + "\n" +
+                "Порода " + breed + "\n" +
+                "Привит/ не привит " + getVaccinated();
     }
 }

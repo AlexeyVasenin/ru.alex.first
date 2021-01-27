@@ -21,23 +21,19 @@ import static java.lang.Integer.parseInt;
 public class Lesson3 {
 
     private static final Scanner input = new Scanner(System.in);
-    private static final String NAME_FOLDER = "test_csv";
-    private static final String DIRECTORY = "src/main/resources/";
+    private static final String DIRECTORY = "src/main/resources/test_csv/";
     private static final String NAME_FILE_CSV = "Csv.csv";
     private int n;
 
-    public void creatingFolder() throws IOException
-    {
-        Files.createDirectories(Paths.get(DIRECTORY + NAME_FOLDER));
+    public void creatingFolder() throws IOException {
+        Files.createDirectories(Paths.get(DIRECTORY));
     }
 
-    public void checkedAndDeleteFileCsv() throws IOException
-    {
-        Files.deleteIfExists(Paths.get(DIRECTORY + NAME_FILE_CSV));
+    public void checkedAndDeleteFileCsv() throws IOException {
+        Files.deleteIfExists(Paths.get(DIRECTORY  + NAME_FILE_CSV));
     }
 
-    private void enteringTheNumberLine()
-    {
+    private void enteringTheNumberLine() {
         System.out.println("Введите число строк");
 
         while (true) {
@@ -55,11 +51,9 @@ public class Lesson3 {
         }
     }
 
-    public void fileWriteCsv() throws IOException
-    {
+    public void fileWriteCsv() throws IOException {
         try (CSVWriter write =
-                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FOLDER +
-                             "/" + NAME_FILE_CSV))) {
+                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV))) {
 
             Random numRandom = SecureRandom.getInstanceStrong();
 
@@ -88,8 +82,7 @@ public class Lesson3 {
         }
     }
 
-    public void fileReadCsv() throws IOException
-    {
+    public void fileReadCsv() throws IOException {
         Map<Integer, Integer> repeat = new HashMap<>();
 
         File fileCsv = new File(DIRECTORY + NAME_FILE_CSV);
@@ -114,9 +107,9 @@ public class Lesson3 {
 
         System.out.println("\nВывод число повторений\n");
 
-        for (Integer key : repeat.keySet()) {
-            System.out.println("Значение #" + key + " повторяется");
-            System.out.println(repeat.get(key));
+        for (Map.Entry<Integer, Integer> key : repeat.entrySet()) {
+            System.out.println("Значение #" + key.getKey() + " повторяется");
+            System.out.println(repeat.get(key.getKey()));
         }
     }
 

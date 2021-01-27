@@ -4,7 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.*;
 
-public class Lesson2 {
+public class Lesson2 extends Animal implements IAnimal {
 
     private static final Scanner in = new Scanner(System.in);
     private int n;
@@ -28,8 +28,7 @@ public class Lesson2 {
         }
     }
 
-    public void writeDogInList() throws NoSuchAlgorithmException
-    {
+    public void writeDogInList() throws NoSuchAlgorithmException {
         ArrayList<Dog> dogList = new ArrayList<>();
         List<Dog> list = new ArrayList<>();
 
@@ -73,7 +72,7 @@ public class Lesson2 {
         }
 
         for (Dog dog : dogList) {
-            System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog.printOut());
+            System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog);
             System.out.println();
         }
 
@@ -82,7 +81,7 @@ public class Lesson2 {
         }
 
         for (Dog dog : list) {
-            System.out.println("Собка #" + (list.indexOf(dog) + 1) + "\n" + dog.printOut());
+            System.out.println("Собка #" + (list.indexOf(dog) + 1) + "\n" + dog);
             System.out.println();
         }
     }
@@ -94,9 +93,10 @@ public class Lesson2 {
 
         for (int i = 0; i < n; i++) {
             try {
+
                 Cat cat = new Cat();
 
-                System.out.println("Введите кличку кота/кошки");
+                System.out.println("Введите кличку животного");
                 cat.setName(in.nextLine());
 
                 System.out.println("Введите цвет");
@@ -127,7 +127,7 @@ public class Lesson2 {
         }
 
         for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
-            System.out.println("Кот/кошка #" + (cat.getKey() + 1) + "\n" + cat.getValue().printOut());
+            System.out.println("Кот/кошка #" + (cat.getKey() + 1) + "\n" + cat.getValue());
         }
     }
 }

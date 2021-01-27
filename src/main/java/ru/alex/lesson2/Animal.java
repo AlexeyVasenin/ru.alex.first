@@ -1,12 +1,12 @@
 package ru.alex.lesson2;
 
 
-public abstract class Animal implements IPrint {
+public abstract class Animal implements IAnimal {
 
     String name, color, address, mom, dad, breed;
     Integer i;
 
-    public Animal(String name, String color, String address, String mom,
+    protected Animal(String name, String color, String address, String mom,
                   String dad, String breed, Integer i) {
 
         this.name = name;
@@ -18,7 +18,7 @@ public abstract class Animal implements IPrint {
         this.i = i;
     }
 
-    public Animal() {
+    protected Animal() {
     }
 
     public String getName() {
@@ -77,10 +77,6 @@ public abstract class Animal implements IPrint {
             throw new IllegalArgumentException("Входное значение может быть " +
                     "равно только 0 или 1 !");
         }
-    }
-
-    public String printOut() {
-        return null;
     }
 }
 
