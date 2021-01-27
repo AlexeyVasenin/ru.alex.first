@@ -1,28 +1,26 @@
-package ru.alex.lesson3;
+package ru.alex.lesson6;
 
-
-import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import com.opencsv.exceptions.CsvException;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
+public class MyThreadWriteCsv extends Thread {
 
-public class Lesson3 {
 
     private static final Scanner input = new Scanner(System.in);
     private static final String DIRECTORY = "src/main/resources/test_csv/";
-    private static final String NAME_FILE_CSV = "Csv.csv";
+    private static final String NAME_FILE_CSV = "Csv";
     private int n;
 
     public void creatingFolder() throws IOException
@@ -35,7 +33,7 @@ public class Lesson3 {
         Files.deleteIfExists(Paths.get(DIRECTORY + NAME_FILE_CSV));
     }
 
-    private void enteringTheNumberLine()
+    public void enteringTheNumberLine()
     {
         System.out.println("Введите число строк");
 
@@ -54,22 +52,22 @@ public class Lesson3 {
         }
     }
 
-    public void fileWriteCsv() throws IOException
+    @Override
+    public void run()
     {
         try (CSVWriter write =
-                     new CSVWriter(new FileWriter(DIRECTORY + NAME_FILE_CSV))) {
+                     new CSVWriter(new FileWriter(DIRECTORY +
+                             getName() + ".csv"))) {
 
             Random numRandom = SecureRandom.getInstanceStrong();
 
-            enteringTheNumberLine();
-
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < 100000; i++) {
 
                 write.flush();
 
                 Map<String, String> theRows = new LinkedHashMap<>();
 
-                String value = Integer.toString(numRandom.nextInt(n));
+                String value = Integer.toString(numRandom.nextInt(100000));
 
                 if (value.equals("0")) {
                     theRows.put(Integer.toString(i), null);
@@ -81,40 +79,9 @@ public class Lesson3 {
                     write.writeNext(new String[]{row.getKey(), row.getValue()});
                 }
             }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void fileReadCsv() throws IOException
-    {
-        Map<Integer, Integer> repeat = new HashMap<>();
-
-        File fileCsv = new File(DIRECTORY + NAME_FILE_CSV);
-
-        try (CSVReader reader = new CSVReader(new FileReader(fileCsv))) {
-            for (String[] row : reader.readAll()) {
-
-                if (row[1].equals("")) {
-                    row[1] = "0";
-                }
-
-                if (repeat.containsKey(parseInt(row[1]))) {
-                    repeat.put(parseInt(row[1]),
-                            repeat.get(parseInt(row[1])) + 1);
-                } else {
-                    repeat.put(parseInt(row[1]), 1);
-                }
-            }
-        } catch (CsvException e) {
+        } catch (NoSuchAlgorithmException | IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("\nВывод число повторений\n");
-
-        for (Map.Entry<Integer, Integer> key : repeat.entrySet()) {
-            System.out.println("Значение #" + key.getKey() + " повторяется");
-            System.out.println(repeat.get(key.getKey()));
-        }
     }
 }
