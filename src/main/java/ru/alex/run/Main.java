@@ -1,5 +1,7 @@
 package ru.alex.run;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.alex.lesson1.Lesson1;
 import ru.alex.lesson2.Lesson2;
 import ru.alex.lesson3.Lesson3;
@@ -14,6 +16,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static final Logger log = LogManager.getLogger(Main.class);
     private static final Scanner input = new Scanner(System.in);
     private static final File FOLDER = new File("Lesson");
     private static final String LESSON1 = "les1";
@@ -25,20 +28,20 @@ public class Main {
     {
         String[] fileLessons = FOLDER.list();
 
-        System.out.println(Arrays.toString(fileLessons) + "\n");
+        log.info(Arrays.toString(fileLessons), "\n");
 
         String in = "";
 
         while (!in.equals(LESSON2) && !in.equals(LESSON3) && !in.equals(LESSON1)
                 && !in.equals(LESSON4)) {
-            System.out.println("Введите les1 or les2 or les3 or les4");
+            log.info("Введите les1 or les2 or les3 or les4");
 
             in = input.nextLine().toLowerCase();
         }
 
         switch (in) {
             case "les1":
-                System.out.println(outTextLesson("Lesson 1.txt"));
+                log.info(outTextLesson("Lesson 1.txt"));
 
                 Lesson1 text = new Lesson1();
 
@@ -46,11 +49,11 @@ public class Main {
                 break;
 
             case "les2":
-                System.out.println(outTextLesson("Lesson 2.txt"));
-                System.out.println(outTextLesson("Lesson 2.2.txt"));
-                System.out.println(outTextLesson("Lesson 2.3.txt"));
-                System.out.println("\n");
-                System.out.println("Введите cat или dog");
+                log.info(outTextLesson("Lesson 2.txt"));
+                log.info(outTextLesson("Lesson 2.2.txt"));
+                log.info(outTextLesson("Lesson 2.3.txt"));
+                log.info("\n");
+                log.info("Введите cat или dog");
 
                 Lesson2 dog = new Lesson2();
                 Lesson2 cat = new Lesson2();
@@ -71,7 +74,7 @@ public class Main {
                 break;
 
             case "les3":
-                System.out.println(outTextLesson("Lesson 3.1.txt"));
+                log.info(outTextLesson("Lesson 3.1.txt"));
 
                 Lesson3 fileCsvTest = new Lesson3();
 
@@ -84,12 +87,12 @@ public class Main {
                 fileCsvTest.fileReadCsv();
 
                 long endTime = System.currentTimeMillis();
-                System.out.println("Время прошло " + (endTime - starTime) / 1000 +
+                log.info("Время прошло {}", (endTime - starTime) / 1000 +
                         "c");
                 break;
 
             case "les4":
-                System.out.println(outTextLesson("Lesson 4.txt"));
+                log.info("Текст задания {}", outTextLesson("Lesson 4.txt"));
 
                 Lesson4 calcTheFnLn = new Lesson4();
 

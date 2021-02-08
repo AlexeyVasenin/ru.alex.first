@@ -1,87 +1,91 @@
 package ru.alex.lesson6;
 
+import org.apache.logging.log4j.*;
+
 import com.opencsv.CSVWriter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
-
-import static java.lang.Integer.parseInt;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class MyThreadWriteCsv extends Thread {
 
+    private static final Logger logger =
+            LogManager.getLogger(MyThreadWriteCsv.class);
 
-    private static final Scanner input = new Scanner(System.in);
     private static final String DIRECTORY = "src/main/resources/test_csv/";
-    private static final String NAME_FILE_CSV = "Csv";
-    private int n;
 
-    public void creatingFolder() throws IOException
-    {
+    private final Map<Integer, Integer> theRows;
+
+    public MyThreadWriteCsv(Map<Integer, Integer> theRows) {
+        this.theRows = theRows;
+    }
+
+    /*Проверка сущечтвования папки для csv файлов, если нет то создаем */
+    private void creatingDirectiry() throws IOException {
         Files.createDirectories(Paths.get(DIRECTORY));
+        logger.info("Проверка директории и создание папки для хранения файлов");
     }
 
-    public void checkedAndDeleteFileCsv() throws IOException
-    {
-        Files.deleteIfExists(Paths.get(DIRECTORY + NAME_FILE_CSV));
+    /*Проверка старых файлов, если есть то удаляем*/
+    private void checkedAndDeleteFileCsv() throws IOException {
+        File dir = new File(DIRECTORY);
+        File[] lst = dir.listFiles();
+        Files.deleteIfExists(Paths.get(Arrays.toString(lst)));
+        logger.info("Проверка наличия файлов в директории и удаление " +
+                "имеющихся");
     }
 
-    public void enteringTheNumberLine()
-    {
-        System.out.println("Введите число строк");
+    /*Счетчик строк в кончном файле*/
+    private void rowCounter() {
+        try (Stream<String> lines =
+                     Files.lines(Paths.get(DIRECTORY + getName() +
+                             ".csv"))) {
 
-        while (true) {
-            try {
-                n = parseInt(input.nextLine());
-                if (n == 0) {
-                    return;
-                } else {
-                    break;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Вы ввели не число, повторите ввод");
-            }
+            long linesCount = lines.count();
+
+            logger.info("Число строк в файле {}", linesCount);
+
+        } catch (IOException e) {
+            logger.error(e);
         }
     }
 
-    @Override
-    public void run()
-    {
+    /*Чтение мапы и запсь в csv файл*/
+    public void writeCsv() throws IOException {
+
+        logger.info("Запись файла {}", getName() + ".csv");
+
         try (CSVWriter write =
                      new CSVWriter(new FileWriter(DIRECTORY +
                              getName() + ".csv"))) {
-
-            Random numRandom = SecureRandom.getInstanceStrong();
-
-            for (int i = 0; i < 100000; i++) {
-
-                write.flush();
-
-                Map<String, String> theRows = new LinkedHashMap<>();
-
-                String value = Integer.toString(numRandom.nextInt(100000));
-
-                if (value.equals("0")) {
-                    theRows.put(Integer.toString(i), null);
-                } else {
-                    theRows.put(Integer.toString(i), value);
-                }
-
-                for (Map.Entry<String, String> row : theRows.entrySet()) {
-                    write.writeNext(new String[]{row.getKey(), row.getValue()});
-                }
+            logger.info("Чтение Мапы и запись файл {}", getName() + ".csv");
+            for (Map.Entry<Integer, Integer> row : theRows.entrySet()) {
+                write.writeNext(new String[]{
+                        Integer.toString(row.getKey()),
+                        Integer.toString(row.getValue())});
             }
-        } catch (NoSuchAlgorithmException | IOException e) {
+
+        } catch (IOException e) {
+            logger.error(e);
+        }
+        logger.info("Файл {}", getName() + ".csv успешно записан");
+
+        rowCounter();
+    }
+
+    @Override
+    public void run() {
+        logger.info("Поток {}", getName());
+
+        try {
+            writeCsv();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

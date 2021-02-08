@@ -1,5 +1,8 @@
 package ru.alex.lesson4;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,10 +17,11 @@ public class Lesson4 {
     // user
     private static double x; // "x" value in function Ln(1+x)=...
 
+    private static final Logger log = LogManager.getLogger(Lesson4.class);
 
-    private static void inputNumberToPower()
-    {
-        System.out.println("Введите степень точности \"accuracy\" не более 0" +
+
+    private static void inputNumberToPower() {
+        log.info("Введите степень точности \"accuracy\" не более 0" +
                 ".1");
 
         while (true) {
@@ -29,15 +33,15 @@ public class Lesson4 {
                 } else break;
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Повторите ввод, число должно быть в " +
+                log.error(e);
+                log.info("Повторите ввод, число должно быть в " +
                         "пределах 0 < accuracy <= 0.1");
             }
         }
     }
 
-    private static void inputNumberToValue()
-    {
-        System.out.println("Введите значение \"x\" больше -1 до 1 ");
+    private static void inputNumberToValue() {
+        log.info("Введите значение \"x\" больше -1 до 1 ");
 
         while (true) {
             try {
@@ -48,14 +52,14 @@ public class Lesson4 {
                 } else break;
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Вводимое число должно удовлетворять " +
+                log.error(e);
+                log.info("Вводимое число должно удовлетворять " +
                         "требованию -1 < x < 1");
             }
         }
     }
 
-    private static double recursiveCalcFuncLn(int n)
-    {
+    private static double recursiveCalcFuncLn(int n) {
         double result = ((Math.pow(-1, n) * Math.pow(x, n)) / n);
 
         if (abs(result) > accuracy) {
@@ -66,8 +70,7 @@ public class Lesson4 {
         return result;
     }
 
-    private static double cycleFuncCalcLn(int n)
-    {
+    private static double cycleFuncCalcLn(int n) {
         double result = 0;
         double i;
         do {
@@ -78,14 +81,15 @@ public class Lesson4 {
         return result;
     }
 
-    public void calcRun()
-    {
-        System.out.println("Программа для вычисления функции Ln(1+x)=... \n");
+    public void calcRun() {
+        log.info("Программа для вычисления функции Ln(1+x)=...\n");
 
         inputNumberToPower();
         inputNumberToValue();
 
-        System.out.println("\nResult recursive func Ln(1+x) \n" + recursiveCalcFuncLn(1));
-        System.out.println("\nResult cycle func Ln(1+x) \n" + cycleFuncCalcLn(1));
+        log.info("\nResult recursive func Ln(1+x)\n {}",
+                recursiveCalcFuncLn(1));
+        log.info("\nResult cycle func Ln(1+x)\n {}",
+                cycleFuncCalcLn(1));
     }
 }

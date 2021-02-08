@@ -20,17 +20,25 @@
             </plugin>
         </plugins>
     </build>
+
 <dependencies>
-    <!--    <dependency>-->
-    <!--        <groupId>net.sf.opencsv</groupId>-->
-    <!--        <artifactId>opencsv</artifactId>-->
-    <!--        <version>2.3</version>-->
-    <!--    </dependency>-->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>2.14.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.14.0</version>
+    </dependency>
+
     <dependency>
         <groupId>com.opencsv</groupId>
         <artifactId>opencsv</artifactId>
         <version>5.2</version>
     </dependency>
+
     <dependency>
         <groupId>org.jetbrains</groupId>
         <artifactId>annotations</artifactId>
@@ -38,6 +46,10 @@
         <scope>compile</scope>
     </dependency>
 
-
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.30</version>
+    </dependency>
 </dependencies>
 </project>

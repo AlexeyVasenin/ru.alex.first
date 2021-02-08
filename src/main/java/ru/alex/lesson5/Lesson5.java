@@ -93,6 +93,7 @@ public class Lesson5 {
 
         for (Depositor i : beans) {
             System.out.println(i);
+
         }
     }
 }
