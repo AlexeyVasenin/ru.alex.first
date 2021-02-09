@@ -31,3 +31,7 @@ Z
 .src/main/java/ru/alex/lesson6/RunTheadCsv.java,e\d\ed2c68e6a6964cab1218b59212aceb86b2c37024
 c
 3src/main/java/ru/alex/lesson6/MyThreadWriteCsv.java,d\9\d9417a5e4ea5abd4c47cb717e5d739580ad22fcb
+C
+Lesson/Lesson 4.txt,4\6\464b7a1c8764e9222e97717d7a060486af2be518
+Z
+*src/main/java/ru/alex/lesson4/Lesson4.java,2\0\20ad1ca567f8f84d5e16d13a7744f14f7359d8f5

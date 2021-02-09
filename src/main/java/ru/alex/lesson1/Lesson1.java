@@ -1,27 +1,33 @@
 package ru.alex.lesson1;
 
-public class Lesson1 {
-    public void lesson1() {
-        //Сложение сторок
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        //Переменные
+public class Lesson1 {
+
+    private static final Logger log = LogManager.getLogger(Lesson1.class);
+
+    public void lesson1() {
+
+        //Строковые переменные a & b
         String a = "Hello";
         String b = "World!";
 
-        //Результирующая переменная
+        //Сложение строк
         String ab = a + " " + b;
 
-        //Вывод
-        System.out.println(ab);
+        //Вывод переменной ab
+        log.info(ab);
 
         //Сложение строк через StringBuilder
-        StringBuilder c = new StringBuilder();
-        c.append(a).append(" ").append(b);
+        StringBuilder sb = new StringBuilder();
+        sb.append(a).append(" ").append(b);
 
-        System.out.println(c.toString());
+        //Вывод текста из перемменной sb
+        log.info(sb.toString());
 
         //Сравнение через equals
-        System.out.println(ab.equals(c));
+        log.info(ab.equals(sb));
 
         //Переменные float и double
         float x = 3.1f;
@@ -32,18 +38,16 @@ public class Lesson1 {
         double result2 = multiply(x1, y1);
 
         //Результаты методов
-        System.out.println(result1);
-        System.out.println(result2);
+        log.info(result1);
+        log.info(result2);
 
         //Сравениен результатов через equals.
-        System.out.println(equals(result1, result2));
-
+        log.info(equals(result1, result2));
     }
 
     //Метод Float
     private static Float multiply(float x, float y) {
         return x * y;
-
     }
 
     //Метод Double
@@ -54,6 +58,5 @@ public class Lesson1 {
     //Метод сравнения equals
     public static Boolean equals(float x, double y) {
         return x == y;
-
     }
 }

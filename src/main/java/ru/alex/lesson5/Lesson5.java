@@ -4,6 +4,8 @@ import com.opencsv.CSVWriter;
 import com.opencsv.bean.*;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -15,6 +17,7 @@ import static java.util.Comparator.comparing;
 
 public class Lesson5 {
 
+    private final Logger log = LogManager.getLogger(Lesson5.class);
     private static final String DIRECTORY = "src/main/resources/depositor/";
     private static final String FILE_NAME_CSV = "depositor.csv";
     private static final String FILE_NAME_TXT = "depositor.txt";
@@ -68,6 +71,7 @@ public class Lesson5 {
 
         } catch (CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
             e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -76,23 +80,37 @@ public class Lesson5 {
         String[] column = new String[]{"id", "name", "accountNumber",
                 "amount", "age"};
 
+        /*Создаем пользовательскую карту столбцов*/
         ColumnPositionMappingStrategy<Depositor> mappingStrategy =
                 new ColumnPositionMappingStrategy<>();
         mappingStrategy.setType(Depositor.class);
 
         mappingStrategy.setColumnMapping(column);
 
+        /*Читаем *.csv фаил записываем в лист и сортируме по параметрам*/
         List<Depositor> beans;
 
-        beans = new CsvToBeanBuilder(new FileReader(DIRECTORY + FILE_NAME_CSV))
+        beans =
+                new CsvToBeanBuilder<Depositor>(new FileReader(DIRECTORY + FILE_NAME_CSV))
                 .withMappingStrategy(mappingStrategy)
                 .build()
                 .parse();
 
-        beans.sort(comparing(Depositor::getAge));
+        /*Сортируем по сумме вклада*/
+        beans.sort(comparing(Depositor::getAmount));
+
+        log.info("Список вкладчиков отсортированных по сумме вклада");
 
         for (Depositor i : beans) {
-            System.out.println(i);
+            log.info(i);
+        }
+        /*Сортируем по году вклада*/
+        beans.sort(comparing(Depositor::getAge));
+
+        log.info("Список вкладчиков отсортированных по году вклада");
+
+        for (Depositor i : beans) {
+            log.info(i);
 
         }
     }

@@ -19,36 +19,35 @@ public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
     private static final Scanner input = new Scanner(System.in);
     private static final File FOLDER = new File("Lesson");
-    private static final String LESSON1 = "les1";
-    private static final String LESSON2 = "les2";
-    private static final String LESSON3 = "les3";
-    private static final String LESSON4 = "les4";
+    private static final String LESSON1 = "l1";
+    private static final String LESSON2 = "l2";
+    private static final String LESSON3 = "l3";
+    private static final String LESSON4 = "l4";
 
-    public static void main(String[] args) throws Exception
-    {
+    public static void main(String[] args) throws Exception {
         String[] fileLessons = FOLDER.list();
-
+        log.info("Список уроков");
         log.info(Arrays.toString(fileLessons), "\n");
 
         String in = "";
 
         while (!in.equals(LESSON2) && !in.equals(LESSON3) && !in.equals(LESSON1)
                 && !in.equals(LESSON4)) {
-            log.info("Введите les1 or les2 or les3 or les4");
+            log.info("Введите l1 or l2 or l3 or l4");
 
             in = input.nextLine().toLowerCase();
+            log.info("Вы ввели {}", in);
         }
 
         switch (in) {
-            case "les1":
-                log.info(outTextLesson("Lesson 1.txt"));
+            case "l1":
 
                 Lesson1 text = new Lesson1();
-
                 text.lesson1();
-                break;
 
-            case "les2":
+                break;
+            case "l2":
+                log.info("Текст задания");
                 log.info(outTextLesson("Lesson 2.txt"));
                 log.info(outTextLesson("Lesson 2.2.txt"));
                 log.info(outTextLesson("Lesson 2.3.txt"));
@@ -72,12 +71,10 @@ public class Main {
                     cat.writeCatInMap();
                 }
                 break;
-
-            case "les3":
-                log.info(outTextLesson("Lesson 3.1.txt"));
+            case "l3":
+                log.info("Текст задания {}", outTextLesson("Lesson 3.1.txt"));
 
                 Lesson3 fileCsvTest = new Lesson3();
-
                 fileCsvTest.creatingFolder();
                 fileCsvTest.checkedAndDeleteFileCsv();
 
@@ -87,26 +84,24 @@ public class Main {
                 fileCsvTest.fileReadCsv();
 
                 long endTime = System.currentTimeMillis();
-                log.info("Время прошло {}", (endTime - starTime) / 1000 +
-                        "c");
-                break;
 
-            case "les4":
+                log.info("Время выполнения программы {}",
+                        ((endTime - starTime) / 1000 + "c"));
+                break;
+            case "l4":
+
                 log.info("Текст задания {}", outTextLesson("Lesson 4.txt"));
 
                 Lesson4 calcTheFnLn = new Lesson4();
-
                 calcTheFnLn.calcRun();
 
                 break;
-
             default:
                 break;
         }
     }
 
-    public static String outTextLesson(String name) throws IOException
-    {
+    public static String outTextLesson(String name) throws IOException {
         StringBuilder outTextLessonAll = new StringBuilder();
         try (BufferedReader reader =
                      new BufferedReader(new FileReader(FOLDER + "/" + name))) {

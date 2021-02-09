@@ -14,7 +14,7 @@ public class Depositor implements Serializable {
     Integer accountNumber; //номер счета
 
     @CsvBindByName
-    Integer amount; // величина вклада
+    Integer amount; // сумма вклада
 
     @CsvBindByName
     Integer age; //год открытия вклада
