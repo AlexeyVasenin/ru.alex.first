@@ -5,8 +5,6 @@ S
 #src/main/java/ru/alex/run/Main.java,0\5\0552220df8e05efc4f65b33c3b492a74195278c3
 \
 ,src/main/java/ru/alex/lesson5/Depositor.java,7\7\77a53b3aa7b936c73c20190fc417ed13cfeb6332
-W
-'src/main/java/ru/alex/lesson5/Main.java,4\7\47a40c2d6808f066ce266f6fd0cdce6ff2c13e5b
 V
 &src/main/java/ru/alex/lesson2/Cat.java,6\3\6396d7ea438bece16b6736e2c03edf5ac85d7f85
 7
@@ -35,3 +33,5 @@ C
 Lesson/Lesson 4.txt,4\6\464b7a1c8764e9222e97717d7a060486af2be518
 Z
 *src/main/java/ru/alex/lesson4/Lesson4.java,2\0\20ad1ca567f8f84d5e16d13a7744f14f7359d8f5
+f
+6src/main/java/ru/alex/lesson5/RunReadLstDepositor.java,2\5\25cd882f8485656b0b2265b224f133cdb18f7d53
