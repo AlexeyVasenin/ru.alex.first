@@ -6,6 +6,7 @@ import ru.alex.lesson1.Lesson1;
 import ru.alex.lesson2.Lesson2;
 import ru.alex.lesson3.Lesson3;
 import ru.alex.lesson4.Lesson4;
+import ru.alex.lesson5.CopyDataDepositor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,6 +24,8 @@ public class Main {
     private static final String LESSON2 = "l2";
     private static final String LESSON3 = "l3";
     private static final String LESSON4 = "l4";
+    private static final String LESSON5 = "l5";
+    private static final String LESSON6 = "l4";
 
     public static void main(String[] args) throws Exception {
         String[] fileLessons = FOLDER.list();
@@ -32,8 +35,8 @@ public class Main {
         String in = "";
 
         while (!in.equals(LESSON2) && !in.equals(LESSON3) && !in.equals(LESSON1)
-                && !in.equals(LESSON4)) {
-            log.info("Введите l1 or l2 or l3 or l4");
+                && !in.equals(LESSON4) && !in.equals(LESSON5)) {
+            log.info("Введите l1 or l2 or l3 or l4 or l5");
 
             in = input.nextLine().toLowerCase();
             log.info("Вы ввели {}", in);
@@ -46,6 +49,7 @@ public class Main {
                 text.lesson1();
 
                 break;
+
             case "l2":
                 log.info("Текст задания");
                 log.info(outTextLesson("Lesson 2.txt"));
@@ -71,6 +75,7 @@ public class Main {
                     cat.writeCatInMap();
                 }
                 break;
+
             case "l3":
                 log.info("Текст задания {}", outTextLesson("Lesson 3.1.txt"));
 
@@ -88,14 +93,22 @@ public class Main {
                 log.info("Время выполнения программы {}",
                         ((endTime - starTime) / 1000 + "c"));
                 break;
-            case "l4":
 
+            case "l4":
                 log.info("Текст задания {}", outTextLesson("Lesson 4.txt"));
 
                 Lesson4 calcTheFnLn = new Lesson4();
                 calcTheFnLn.calcRun();
-
                 break;
+
+            case "l5":
+                log.info("Текст задания");
+                log.info(outTextLesson("Lesson 5.txt"));
+
+                CopyDataDepositor copyDataDepositor = new CopyDataDepositor();
+                copyDataDepositor.run();
+                break;
+
             default:
                 break;
         }

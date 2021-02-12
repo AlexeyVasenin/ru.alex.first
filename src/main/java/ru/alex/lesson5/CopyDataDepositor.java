@@ -55,7 +55,8 @@ public class CopyDataDepositor implements ICopyData {
                 String[] strings = depositorData.split(",");
 
                 if (checkData(strings[1])) {
-                    log.info(checkData(strings[1]));
+                    log.info("Данные пользователя {}{}", strings,
+                            "корректны");
                     listMan.add(new Depositor(strings[0],
                             Integer.parseInt(strings[1]),
                             Integer.parseInt(strings[2]),
