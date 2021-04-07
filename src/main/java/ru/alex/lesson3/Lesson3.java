@@ -46,11 +46,9 @@ public class Lesson3 {
         while (true) {
             try {
                 n = parseInt(input.nextLine());
-                if (n == 0) {
-                    return;
-                } else {
-                    break;
-                }
+                if (n == 0 || n < 0) {
+                    System.exit(0);
+                } else break;
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error(e);

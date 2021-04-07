@@ -7,26 +7,34 @@ import java.util.*;
 public class Lesson2 extends Animal implements IAnimal {
 
     private static final Scanner in = new Scanner(System.in);
-    private int n;
+    Integer amount;
 
     private void enteringTheNumberOfAnimals() {
         System.out.println("Введите кол-во животных(не менее 1)");
 
-        while (true) {
+        boolean isCorrect = false;
+
+        while (!isCorrect) {
             try {
-                n = Integer.parseInt(in.nextLine());
-                if (n == 0) {
-                    return;
+                String n = in.nextLine();
+
+                if (n.equals("0")) {
+                    System.exit(0);
                 } else {
-                    break;
+                    amount = Integer.valueOf(n);
+                    isCorrect = (amount >= 0);
                 }
             } catch (Exception e) {
+                isCorrect = false;
                 e.printStackTrace();
-                System.out.println("Вы ввели не число, введите кол-во " +
-                        "животных(не менее 1)");
+            }
+            if (!isCorrect) {
+                System.out.println("Вы ввели не число," +
+                        "отрицательное число или не целое");
             }
         }
     }
+
 
     public void writeDogInList() throws NoSuchAlgorithmException {
         ArrayList<Dog> dogList = new ArrayList<>();
@@ -36,9 +44,9 @@ public class Lesson2 extends Animal implements IAnimal {
 
         enteringTheNumberOfAnimals();
 
-        int sumObject = random.nextInt(n) + 1;
+        int sumObject = random.nextInt(amount) + 1;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < amount; i++) {
             try {
                 Dog dog = new Dog();
 
@@ -77,7 +85,7 @@ public class Lesson2 extends Animal implements IAnimal {
         }
 
         for (int x = 0; x < sumObject; x++) {
-            list.add(dogList.get(random.nextInt(n)));
+            list.add(dogList.get(random.nextInt(amount)));
         }
 
         for (Dog dog : list) {
@@ -91,7 +99,7 @@ public class Lesson2 extends Animal implements IAnimal {
 
         enteringTheNumberOfAnimals();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < amount; i++) {
             try {
 
                 Cat cat = new Cat();

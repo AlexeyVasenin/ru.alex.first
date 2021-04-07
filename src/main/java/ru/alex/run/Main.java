@@ -25,7 +25,6 @@ public class Main {
     private static final String LESSON3 = "l3";
     private static final String LESSON4 = "l4";
     private static final String LESSON5 = "l5";
-    private static final String LESSON6 = "l4";
 
     public static void main(String[] args) throws Exception {
         String[] fileLessons = FOLDER.list();

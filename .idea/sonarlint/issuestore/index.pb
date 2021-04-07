@@ -31,11 +31,9 @@ C
 Lesson/Lesson 4.txt,4\6\464b7a1c8764e9222e97717d7a060486af2be518
 Z
 *src/main/java/ru/alex/lesson4/Lesson4.java,2\0\20ad1ca567f8f84d5e16d13a7744f14f7359d8f5
-^
-.src/main/java/ru/alex/lesson5/CopyDataRun.java,0\b\0b2c1354011ba16f9cf27aa4ddf2079883866fcb
 d
 4src/main/java/ru/alex/lesson5/CopyDataDepositor.java,4\1\419b8362893fc2d182242bb2ec38e9278831f0b3
 Z
 *src/main/java/ru/alex/lesson1/Lesson1.java,6\b\6b4f340fdb1da7c6ec691bde4281040967eb58f1
-]
--src/main/java/ru/alex/lesson7/TestReadDb.java,0\3\0394e0c95cefae86e226ac4f5434fb88d0c8b8f4
+_
+/src/main/java/ru/alex/lesson8/ReadListFile.java,5\b\5b145976f517dc9a07ec48e766639de58ffe7b57
