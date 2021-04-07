@@ -1,16 +1,21 @@
 package ru.alex.lesson2;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.*;
 
 public class Lesson2 extends Animal implements IAnimal {
 
+    Logger logger = LogManager.getLogger(Lesson2.class);
+
     private static final Scanner in = new Scanner(System.in);
     Integer amount;
 
     private void enteringTheNumberOfAnimals() {
-        System.out.println("Введите кол-во животных(не менее 1)");
+        logger.info("Введите кол-во животных(не менее 1)");
 
         boolean isCorrect = false;
 
@@ -27,9 +32,11 @@ public class Lesson2 extends Animal implements IAnimal {
             } catch (Exception e) {
                 isCorrect = false;
                 e.printStackTrace();
+                logger.error(e);
+
             }
             if (!isCorrect) {
-                System.out.println("Вы ввели не число," +
+                logger.info("Вы ввели не число," +
                         "отрицательное число или не целое");
             }
         }
@@ -38,6 +45,7 @@ public class Lesson2 extends Animal implements IAnimal {
 
     public void writeDogInList() throws NoSuchAlgorithmException {
         ArrayList<Dog> dogList = new ArrayList<>();
+
         List<Dog> list = new ArrayList<>();
 
         Random random = SecureRandom.getInstanceStrong();
@@ -50,38 +58,39 @@ public class Lesson2 extends Animal implements IAnimal {
             try {
                 Dog dog = new Dog();
 
-                System.out.println("Введите кличку собаки");
+                logger.info("Введите кличку собаки");
                 dog.setName(in.nextLine());
 
-                System.out.println("Введите цвет");
+                logger.info("Введите цвет");
                 dog.setColor(in.nextLine());
 
-                System.out.println("Введите место проживания");
+                logger.info("Введите место проживания");
                 dog.setAddress(in.nextLine());
 
-                System.out.println("Введите Мать");
+                logger.info("Введите Мать");
                 dog.setMom(in.nextLine());
 
-                System.out.println("Введите Отца");
+                logger.info("Введите Отца");
                 dog.setDad(in.nextLine());
 
-                System.out.println("Введите Породу");
+                logger.info("Введите Породу");
                 dog.setBreed(in.nextLine());
 
-                System.out.println("Кастрирован(1)/ не кастрирован(0)");
+                logger.info("Кастрирован(1)/ не кастрирован(0)");
                 dog.setCastrate(Integer.parseInt(in.nextLine()));
 
                 dogList.add(i, dog);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Допущена ошибка, повторите ввод");
+                logger.error(e);
+                logger.error("Допущена ошибка, повторите ввод");
                 i--;
             }
         }
 
         for (Dog dog : dogList) {
-            System.out.println("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog);
-            System.out.println();
+            logger.info("Собка #" + (dogList.indexOf(dog) + 1) + "\n" + dog +
+                    "\n");
         }
 
         for (int x = 0; x < sumObject; x++) {
@@ -89,8 +98,7 @@ public class Lesson2 extends Animal implements IAnimal {
         }
 
         for (Dog dog : list) {
-            System.out.println("Собка #" + (list.indexOf(dog) + 1) + "\n" + dog);
-            System.out.println();
+            logger.info("Собка #" + (list.indexOf(dog) + 1) + "\n" + dog + "\n");
         }
     }
 
@@ -104,38 +112,39 @@ public class Lesson2 extends Animal implements IAnimal {
 
                 Cat cat = new Cat();
 
-                System.out.println("Введите кличку животного");
+                logger.info("Введите кличку животного");
                 cat.setName(in.nextLine());
 
-                System.out.println("Введите цвет");
+                logger.info("Введите цвет");
                 cat.setColor(in.nextLine());
 
-                System.out.println("Введите место проживания");
+                logger.info("Введите место проживания");
                 cat.setAddress(in.nextLine());
 
-                System.out.println("Введите Мать");
+                logger.info("Введите Мать");
                 cat.setMom(in.nextLine());
 
-                System.out.println("Введите Отца");
+                logger.info("Введите Отца");
                 cat.setDad(in.nextLine());
 
-                System.out.println("Введите породу");
+                logger.info("Введите породу");
                 cat.setBreed(in.nextLine());
 
-                System.out.println("Введите привит(1)/ не привит(0)");
+                logger.info("Введите привит(1)/ не привит(0)");
                 cat.setVaccinated(Integer.parseInt(in.nextLine()));
 
                 catList.put(i, cat);
 
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Допущена ошибка, повторите ввод");
+                logger.error(e);
+                logger.error("Допущена ошибка, повторите ввод");
                 i--;
             }
         }
 
         for (Map.Entry<Integer, Cat> cat : catList.entrySet()) {
-            System.out.println("Кот/кошка #" + (cat.getKey() + 1) + "\n" + cat.getValue());
+            logger.info("Кот/кошка #" + (cat.getKey() + 1) + "\n" + cat.getValue());
         }
     }
 }
