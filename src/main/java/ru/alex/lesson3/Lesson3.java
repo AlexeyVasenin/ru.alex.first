@@ -114,8 +114,9 @@ public class Lesson3 {
         log.info("Вывод число повторений\n");
 
         for (Map.Entry<Integer, Integer> key : repeat.entrySet()) {
-            log.info("Значение #{}", key.getKey() + " повторяется");
-            log.info(repeat.get(key.getKey()));
+            repeat.compute(key.getKey(), (k, v) -> v == null ? 1 : v+1);
+            log.info("Значение #{}",
+                    key.getKey() + " повторяется " + key.getValue());
         }
     }
 }
