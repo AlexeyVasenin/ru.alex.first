@@ -43,6 +43,8 @@ public class Lesson1 {
 
         //Сравениен результатов через equals.
         log.info(equals(result1, result2));
+
+        System.out.println("Test stash function");
     }
 
     //Метод Float
